@@ -1,0 +1,10 @@
+<%= form_for @fan do |f| %>
+<h1> Welcome! Please add the below information to get started: </h1>
+<p><%= f.label :name %></p>
+<p><%= f.text_field :name %></p>
+<p><%= f.label :bio %></p>
+<p><%= f.text_field :bio %></p>
+<p><%= f.submit %></p>
+<% end %>
+
+
