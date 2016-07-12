@@ -1,0 +1,2 @@
+class AudioCollection < ApplicationRecord
+end

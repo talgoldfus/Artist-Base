@@ -1,0 +1,2 @@
+class VideoCollection < ApplicationRecord
+end
