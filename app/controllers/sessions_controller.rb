@@ -1,22 +1,36 @@
 class SessionsController < ApplicationController
 
   def new
-    # byebug
   end
 
   def create
-    # byebug
     if params[:artist]
       @user = Artist.find_by(username: params[:artist][:username])
     elsif params[:fan]
       @user = Fan.find_by(username: params[:fan][:username])
     end
-    if @user.authenticate(params[:password])
-      login(@user)
-      redirect_to @user
+    if @user
+      validate_password(@user)
     else
-      flash.now[:message] = "Please Enter the Correct Password"
-      render 'new'
+      invalid_username(@user)
+    end
+  end
+
+  def validate_password(user)
+    if user.authenticate(params[:password])
+      login(user)
+      redirect_to user
+    else
+      flash[:message] = "Please Enter the Correct Password"
+      redirect_to '/login'
+    end
+  end
+
+  def invalid_username(user)
+    if user.nil?
+      # byebug
+      flash[:message] = "Please enter a valid username"
+      redirect_to '/login'
     end
   end
 
