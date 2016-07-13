@@ -11,13 +11,8 @@ class CartsController < ApplicationController
 
   def update
     @cart= Fan.find(session[:fan_id]).cart
-    @cart.update(cart_params)
-  end
-
-
-  def cart_params
-    byebug
-    params.require(:cart).permit()
+    @cart.media.destroy(cart_params[:media].reject(&:empty?).map{|i| Medium.find(i)})
+    redirect_to cart_path(@cart)
   end
 
   def add_item
@@ -34,7 +29,14 @@ class CartsController < ApplicationController
       Item.find_or_create_by(cart_id: @cart.id, medium_id: item.id)
       flash[:message] = "Added medium to favorites"
       redirect_to medium_path(item)
-    end
-    
+    end 
   end
+
+  private
+
+  def cart_params
+    
+    params.require(:cart).permit( media:[])
+  end
+
 end

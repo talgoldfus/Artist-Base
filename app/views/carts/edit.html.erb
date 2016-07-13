@@ -1,6 +1,8 @@
-<% form_for @cart do |f| %>
+<%= form_for @cart do |f| %>
 
 <h3> Edit your favorite media </h3>
+
+<h5>Select the media that you want to remove from your list</h5>
 
 <%= f.collection_check_boxes :media, @cart.media, :id, :name %><br>
 <%=f.submit %>

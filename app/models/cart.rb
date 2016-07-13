@@ -4,7 +4,6 @@ class Cart < ApplicationRecord
   has_many :media, through: :items
 
 
-
   def image_collections
     self.media.map {|medium| medium.image_collection}.uniq
   end
