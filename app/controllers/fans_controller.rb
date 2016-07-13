@@ -7,7 +7,8 @@ class FansController < ApplicationController
 
   def create
     @fan = Fan.create(fan_params)
-    @fan.update(cart_id: Cart.create.id)
+    @fan.cart= Cart.create()
+    @fan.save
     redirect_to fan_path(@fan)
   end
 

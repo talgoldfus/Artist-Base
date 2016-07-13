@@ -1,7 +1,7 @@
 ##artists
 Artist.destroy_all
 10.times do 
-  Artist.create(name: Faker::Name.name, abstract: Faker::ChuckNorris.fact, 
+   Artist.create(name: Faker::Name.name, abstract: Faker::ChuckNorris.fact, 
     bio: Faker::Hacker.say_something_smart, password: "flatiron", 
     username: Faker::Internet.email, artist_type: "Photographer")
 end
@@ -9,8 +9,10 @@ end
 ##fans
 Fan.destroy_all
 20.times do 
-  Fan.create(name: Faker::Name.name, bio: Faker::ChuckNorris.fact, 
+  fan =Fan.create(name: Faker::Name.name, bio: Faker::ChuckNorris.fact, 
     password: "flatiron", username: Faker::Internet.email)
+  fan.cart=Cart.create()
+  fan.save
 end
 
 ##image collections
@@ -33,4 +35,9 @@ n = 0
     quantity: rand(1..100), genre: genre_arr[n], image_collection_id: rand(1..20))
     n = 0 if n >= 8
 end
+
+
+
+
+
 

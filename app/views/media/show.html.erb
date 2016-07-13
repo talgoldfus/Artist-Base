@@ -1,3 +1,15 @@
+<%  if flash[:message] %>
+<%=  flash[:message]%>
+<%  end %>
+<br>
+
 Created by:
 <%= link_to "#{@medium.image_collection.artist.name}", artist_path(@medium.image_collection.artist) %>
 <%= @medium.name %>
+
+<% if session[:fan_id] %>
+  <%=form_tag carts_add_item_path do  %>
+    <%= hidden_field_tag "medium_id" , @medium.id %>
+    <%= submit_tag "Add medium to favorites" %>
+<% end %>
+<% end %>

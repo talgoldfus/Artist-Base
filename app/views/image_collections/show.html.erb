@@ -1,3 +1,7 @@
+<%  if flash[:message] %>
+<%=  flash[:message]%>
+<%  end %>
+
 <h1> <%=@image_collection.name %></h1>
 <p>by: <%=link_to "#{@image_collection.artist.name}", artist_path(@image_collection.artist) %></p>
 
@@ -7,4 +11,13 @@
   <h5><%= link_to "Picture Embed Link" , medium_path(medium) %></h5>
   <p>Name: <%= medium.name %> Price: <%= medium.name %> Genre: <%= medium.name %></p>
 <% end %>
+<% if session[:artist_id]== @image_collection.artist.id %>
 <%= link_to "Edit This Collection", edit_image_collection_path(@image_collection) %>
+<% end %>
+<br>
+<% if session[:fan_id] %>
+  <%=form_tag carts_add_item_path do  %>
+    <%= hidden_field_tag "collection_id" , @image_collection.id %>
+    <%= submit_tag "Add collection to favorites" %>
+  <% end %>
+<% end %>
