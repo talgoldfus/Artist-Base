@@ -4,11 +4,27 @@
     <title>Artistbase</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
   <body>
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <% if session[:artist_id] || session[:fan_id] %>
+          <li role="presentation" class="active"><%= link_to "Logout", "/logout", method: :post %></li>
+        <% else %>
+          <li role="presentation" class="active"><a href="/login">Login</a></li>
+          <p class="active">Sign up: </p>
+          <li role="presentation" class="active"><a href="artists/new">Artist</a></li>
+          <li role="presentation" class="active"><a href="fans/new">Fan</a></li>
+        <% end %>
+      </ul>
     <%= yield %>
+
+
+
+    </div>
   </body>
 </html>
