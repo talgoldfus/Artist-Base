@@ -4,11 +4,14 @@
 
 <h3>Bio:</h3>
 <p><%= @artist.bio %></p><br>
-<%= link_to "edit artist", edit_artist_path(@artist) %>
 
 <% @artist.image_collections.each do |collection| %>
   <p><%= link_to "#{collection.name}", collection %></p>
 <% end %>
+
+<% if session[:artist_id] %>
+<%= link_to "edit artist", edit_artist_path(@artist) %><br>
 <%= link_to "Add New Collection", new_image_collection_path %><br>
+<% end%>
 
 <%= button_to "Logout", logout_path %>
