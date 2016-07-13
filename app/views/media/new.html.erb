@@ -1,0 +1,12 @@
+<%= form_for @medium do |f| -%>
+<h1> Please enter the below information </h1>
+<%= f.label :name %>
+<%= f.text_field :name %><p>
+<%= f.label :genre %>
+<%= f.text_field :genre %><p>
+<%= f.label :price %>
+<%= f.text_field :price %><p>
+<%= f.label :quantity %>
+<%= f.text_field :quantity %><p>
+<%= f.submit "Create" %><p>
+<% end -%>

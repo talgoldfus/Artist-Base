@@ -1,0 +1,21 @@
+<h1>Create a New Artist</h1>
+<%= form_for @artist do |f| %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name %></p><br>
+
+  <p><%= f.label "Are you a musician, visual artist, or videographer" %></p>
+  <p><%= f.label "visual" %>
+    <%= f.radio_button :artist_type, 'visual'  %>  </p>
+  <p><%= f.label "musician" %>
+    <%= f.radio_button :artist_type, 'musician'  %>  </p>
+  <p><%= f.label "videographer" %>
+    <%= f.radio_button :artist_type, 'videographer'  %>  </p><br>
+
+  <p><%= f.label :abstract, "Write a short abstract about your work" %></p>
+  <p><%= f.text_area :abstract %></p><br>
+
+  <p><%= f.label :bio, "Write a full bio" %></p>
+  <p><%= f.text_area :bio %></p><br>
+
+  <%= f.submit "Create new Artist" %>
+<% end %>
