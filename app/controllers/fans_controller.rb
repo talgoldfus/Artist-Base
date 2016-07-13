@@ -9,6 +9,7 @@ class FansController < ApplicationController
     @fan = Fan.create(fan_params)
     @fan.cart= Cart.create()
     @fan.save
+    login(@fan)
     redirect_to fan_path(@fan)
   end
 
