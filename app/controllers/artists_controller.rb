@@ -6,7 +6,8 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.create(artist_params)
     # sessions[:artist_id] = @artist.id
-    redirect_to '/'
+    # redirect_to '/'
+    redirect_to @artist
   end
 
   def index

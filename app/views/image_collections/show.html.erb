@@ -1,9 +1,10 @@
 <h1> <%=@image_collection.name %></h1>
-<p>by: <%=@image_collection.artist.name %></p>
+<p>by: <%=link_to "#{@image_collection.artist.name}", artist_path(@image_collection.artist) %></p>
 
 <h3>Art Work Gallery:</h3>
-<bR>
-  <% @image_collection.media.each do |medium| %>  
-    <h5><%= link_to "Picture Embed Link" , medium_path(medium) %></h5>
-   <p>Name: <%= medium.name %> Price: <%= medium.name %> Genre: <%= medium.name %></p>
-  <% end %>
+<br>
+<% @image_collection.media.each do |medium| %>
+  <h5><%= link_to "Picture Embed Link" , medium_path(medium) %></h5>
+  <p>Name: <%= medium.name %> Price: <%= medium.name %> Genre: <%= medium.name %></p>
+<% end %>
+<%= link_to "Edit This Collection", edit_image_collection_path(@image_collection) %>

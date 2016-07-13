@@ -13,6 +13,7 @@ class MediaController < ApplicationController
 
   def show
     @medium = Medium.find(params[:id])
+    byebug
   end
 
   def edit
