@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712174904) do
+ActiveRecord::Schema.define(version: 20160712212539) do
 
   create_table "artist_fans", force: :cascade do |t|
     t.integer  "artist_id"
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(version: 20160712174904) do
     t.float    "price"
     t.string   "genre"
     t.integer  "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "image_collection_id"
   end
 
   create_table "video_collections", force: :cascade do |t|

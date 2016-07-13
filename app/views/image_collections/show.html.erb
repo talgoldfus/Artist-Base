@@ -1,0 +1,9 @@
+<h1> <%=@image_collection.name %></h1>
+<p>by: <%=@image_collection.artist.name %></p>
+
+<h3>Art Work Gallery:</h3>
+<bR>
+  <% @image_collection.media.each do |medium| %>  
+    <h5><%= link_to "Picture Embed Link" , medium_path(medium) %></h5>
+   <p>Name: <%= medium.name %> Price: <%= medium.name %> Genre: <%= medium.name %></p>
+  <% end %>

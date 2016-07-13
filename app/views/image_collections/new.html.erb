@@ -1,0 +1,31 @@
+<h1> Create new image collection</h1>
+
+<%= form_for (@image_collection) do |f| %>
+  <% i=0%>
+  <%=f.label :name ,"Collection Name"%>
+  <%=f.text_field :name %>
+  <br>
+  <h3> Create new media for your collection</h3>
+    <%= f.fields_for :media do |medium| %>
+      <% i+= 1%>
+          <h5><%= "Medium Number #{i}:" %></h5>
+       <%= medium.label :name %>
+       <%= medium.text_field :name %>
+       <br>
+        <%= medium.label :genre %>
+       <%= medium.text_field :genre %>
+       <br>
+       <%= medium.label :price %>
+       <%= medium.text_field :price %>
+       <br>
+       <%= medium.label :quantity %>
+       <%= medium.text_field :quantity %>
+  <br>
+
+    <%end%>
+  
+  <br>
+
+  <%=f.submit %>
+
+<% end %>
