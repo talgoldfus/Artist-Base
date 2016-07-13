@@ -1,0 +1,10 @@
+<% form_for @cart do |f| %>
+
+<h3> Edit your favorite media </h3>
+
+<%= f.collection_check_boxes :media, @cart.media, :id, :name %><br>
+<%=f.submit %>
+
+
+<% end %>
+

@@ -1,0 +1,16 @@
+<h1> Your Favorites </h1>
+  <h4>Favorite Media:</h4>
+  <br>
+
+  <% @cart.image_collection.each do |collection| %>
+  <!-- List all the media in the cart by the collection it belongs to   
+  --><h5>collection.name</h5>
+        <br>
+
+    <% cart.media.where(image_collection_id: collection.id ).each do |medium| %>
+      <h5><%= link_to "Picture Embed Link" , medium_path(medium) %></h5>
+      <p>Name: <%= medium.name %> Price: <%= medium.price %> Genre: <%= medium.genre %></p>
+    <% end %>
+    <br>
+
+  <% end %>
