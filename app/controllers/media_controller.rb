@@ -12,7 +12,6 @@ class MediaController < ApplicationController
 
   def show
     @medium = Medium.find(params[:id])
-    # byebug
   end
 
   def edit
@@ -23,6 +22,13 @@ class MediaController < ApplicationController
     @medium = Medium.find(params[:id])
     @medium.update(name: params[:medium][:name], genre: params[:medium][:genre], price: params[:medium][:price], quantity: [:medium][:quantity])
   end
+
+  def index
+    if params[:genre_name]
+      @media = Medium.all.where("genre = '#{params[:genre_name]}'")
+    end
+  end
+
 
 private
 

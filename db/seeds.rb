@@ -33,7 +33,8 @@ n = 0
 50.times do 
   Medium.create(name: Faker::Name.name, price: rand(100..1000), 
     quantity: rand(1..100), genre: genre_arr[n], image_collection_id: rand(1..20))
-    n = 0 if n >= 8
+    n += 1
+    n = 0 if n >= genre_arr.length
 end
 
 

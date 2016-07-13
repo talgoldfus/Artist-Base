@@ -1,0 +1,4 @@
+<% @media.each do |medium| %>
+<p>Created by: <%= link_to "#{medium.image_collection.artist.name}", artist_path(medium.image_collection.artist) %></p>
+Media name: <%= medium.name %></p>
+<% end %>

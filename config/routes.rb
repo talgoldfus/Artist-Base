@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :fans
   resources :artists
 
+
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'

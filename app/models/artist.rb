@@ -7,4 +7,8 @@ class Artist < ApplicationRecord
 
   has_secure_password
 
+def self.search(search)
+  artist = where("name LIKE ?", "%#{search}%") 
+end
+
 end

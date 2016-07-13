@@ -28,4 +28,36 @@ Edit
 Cart
 Show
 
+Day 2
+home page
+  - artist index
+  - search function by artist name
+      Artist.all.where("name like '%ayer%'")
+  - log in and sign up buttons
+  
+  - activerecord filter for genres that links to a filtered artist index by genre
+
+  need to create a genre show page?
+
+  
+  Home page features
+    - most popular artists
+
+cart
+ - change to favorites
+ - create a page that shows all of a fans favorites
+  - this fan is a fan's personal collection and shows their collections and media
+ - create button on each artist page, collection, and medium that a fan can favorite
+ - edit page for favorites with checkbox to delete 
+
+models
+  - validations
+
+  
+  - querying for features
+
+
+tests
+  - models
+  - assocations
 
