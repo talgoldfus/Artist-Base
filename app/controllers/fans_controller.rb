@@ -1,12 +1,12 @@
 class FansController < ApplicationController
-  
+  before_action :login_required, only: :edit
+
   def new
     @fan = Fan.new
   end
 
   def create
     @fan = Fan.create(fan_params)
-
     redirect_to fan_path(@fan)
   end
 
@@ -22,14 +22,14 @@ class FansController < ApplicationController
   def update
    @fan = Fan.find(params[:id])
    @fan.update(name: params[:fan][:name], bio: params[:fan][:bio])
-   redirect_to fan_path(@fan)    
+   redirect_to fan_path(@fan)
   end
 
 
 private
 
 def fan_params
-  params.require(:fan).permit(:name, :bio)
+  params.require(:fan).permit(:name, :bio, :username, :password, :password_confirmation)
 end
 
 end

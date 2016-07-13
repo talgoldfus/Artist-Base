@@ -2,6 +2,12 @@
 <%= form_for @artist do |f| %>
   <p><%= f.label :name %></p>
   <p><%= f.text_field :name %></p><br>
+  <p><%= f.label :username %></p>
+  <p><%= f.text_field :username %></p>
+  <p><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p><br>
+  <p><%= f.label "Confirm Password: " %></p>
+  <p><%= f.password_field :password_confirmation %></p><br><br>
 
   <p><%= f.label "Are you a musician, visual artist, or videographer" %></p>
   <p><%= f.label "visual" %>

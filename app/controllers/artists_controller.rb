@@ -1,11 +1,13 @@
 class ArtistsController < ApplicationController
+  before_action :login_required, only: :edit
+
   def new
     @artist = Artist.new
   end
 
   def create
     @artist = Artist.create(artist_params)
-    # sessions[:artist_id] = @artist.id
+    session[:artist_id] = @artist.id
     # redirect_to '/'
     redirect_to @artist
   end
@@ -36,6 +38,6 @@ class ArtistsController < ApplicationController
 
   private
     def artist_params
-      params.require(:artist).permit(:name, :artist_type, :abstract, :bio)
+      params.require(:artist).permit(:name, :artist_type, :abstract, :bio, :username, :password, :password_confirmation)
     end
 end

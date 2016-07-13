@@ -1,0 +1,19 @@
+<h1>Login</h1>
+
+<h3>Artist Login</h3>
+<p><%= form_tag '/sessions' do %></p>
+  <p><%= label_tag "Username" %></p>
+  <p><%= text_field_tag 'artist[username]' %></p>
+  <p><%= label_tag "Password" %></p>
+  <p><%= password_field_tag 'password' %></p>
+  <p><%= submit_tag 'login' %></p>
+<% end %><br><br>
+
+<h3>Fan Login</h3>
+<p><%= form_tag '/sessions' do %></p>
+  <p><%= label_tag "Username" %></p>
+  <p><%= text_field_tag 'fan[username]' %></p>
+  <p><%= label_tag "Password" %></p>
+  <p><%= password_field_tag 'password' %></p>
+  <p><%= submit_tag 'login' %></p>
+<% end %>

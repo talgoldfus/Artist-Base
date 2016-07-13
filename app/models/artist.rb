@@ -5,4 +5,6 @@ class Artist < ApplicationRecord
   has_many :media, through: :image_collections
   has_many :items, through: :media
 
+  has_secure_password
+
 end

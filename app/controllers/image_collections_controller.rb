@@ -6,7 +6,9 @@ class ImageCollectionsController < ApplicationController
     end
 
     def create
-      @image_collection=ImageCollection.create(artist_id: Artist.create(name: "woot").id)
+      # byebug
+      @artist = Artist.find(session[:artist_id])
+      @image_collection=ImageCollection.create(artist_id: @artist.id)
       @image_collection.update(image_collection_params)
       # @artist.image_collections<< @image_collection
       # @artist.save

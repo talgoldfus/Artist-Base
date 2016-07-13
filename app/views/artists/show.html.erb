@@ -9,4 +9,6 @@
 <% @artist.image_collections.each do |collection| %>
   <p><%= link_to "#{collection.name}", collection %></p>
 <% end %>
-<%= link_to "Add New Collection", new_image_collection_path %>
+<%= link_to "Add New Collection", new_image_collection_path %><br>
+
+<%= button_to "Logout", logout_path %>
