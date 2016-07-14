@@ -1,3 +1,17 @@
+  <div class="container-fluid col-xs-12">
+       <h1><%= link_to "View All  Media", media_path  %> </h1>
+  </div>
+
+  <div class="panel panel-default col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">Filter Media By Genre:</h3>
+    </div>
+    <div class="panel-body">
+      <% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
+      <button><%= link_to genre, media_path(:genre_name => genre) %></button>
+    <% end %>
+    </div>
+  </div>
 
 <%= render partial: "medium_mini_profile", collection: @media, as: :medium %>
 

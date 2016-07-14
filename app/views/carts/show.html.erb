@@ -3,9 +3,13 @@
   <br>
 
   <% @cart.image_collections.each do |collection| %>
-  <!-- List all the media in the cart by the collection it belongs to   
-  --><h5><%= collection.name %></h5>
+  <!-- List all the media in the cart by the collection it belongs to  
+
+  -->
+  <br>
+  <h5><%= collection.name %></h5>
 <%= render partial: "media/medium_mini_profile", collection: @cart.media.where(image_collection_id: collection.id ), as: :medium %>
+<br>
     <% end %>
 
     <%= link_to "Edit your favorites" , edit_cart_path(@cart)  %>

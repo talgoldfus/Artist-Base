@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
-  root to: 'artists#index'
+  root to: 'home#index'
   post '/carts/add_item' ,to: 'carts#add_item'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

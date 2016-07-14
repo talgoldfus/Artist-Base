@@ -26,6 +26,8 @@ class MediaController < ApplicationController
   def index
     if params[:genre_name]
       @media = Medium.all.where("genre = '#{params[:genre_name]}'").group('image_collection_id')
+    else
+      @media=Medium.all
     end
   end
 
