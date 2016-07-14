@@ -1,5 +1,3 @@
-<% @media.each do |medium| %>
-<p>Created by: <%= link_to "#{medium.image_collection.artist.name}", artist_path(medium.artist) %></p>
-Collection name: <%= medium.image_collection.name %></p>
-Media name: <%= medium.name %></p>
-<% end %>
+
+<%= render partial: "medium_mini_profile", collection: @media, as: :medium %>
+

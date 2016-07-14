@@ -7,10 +7,11 @@
 
 <h3>Art Work Gallery:</h3>
 <br>
-<% @image_collection.media.each do |medium| %>
-  <h5><%= link_to "Picture Embed Link" , medium_path(medium) %></h5>
-  <p>Name: <%= medium.name %> Price: <%= medium.name %> Genre: <%= medium.name %></p>
-<% end %>
+
+
+<%= render partial: "media/medium_mini_profile", collection: @image_collection.media, as: :medium %>
+
+
 <% if session[:artist_id]== @image_collection.artist.id %>
 <%= link_to "Edit This Collection", edit_image_collection_path(@image_collection) %>
 <% end %>

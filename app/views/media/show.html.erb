@@ -3,9 +3,15 @@
 <%  end %>
 <br>
 
+<h1><%= @medium.name %></h1>
 Created by:
 <%= link_to "#{@medium.image_collection.artist.name}", artist_path(@medium.image_collection.artist) %>
-<%= @medium.name %>
+
+<p>Collection: <%= link_to "#{@medium.image_collection.name}", image_collection_path(@medium.image_collection)%> </p>
+
+
+
+
 
 <% if session[:fan_id] %>
   <%=form_tag carts_add_item_path do  %>
