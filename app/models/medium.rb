@@ -11,4 +11,8 @@ class Medium < ApplicationRecord
     medium = where("name LIKE ?", "%#{search}%")
   end
 
+  def self.most_favorited_media(num)
+    self.all.joins(:items).group('items.medium_id').order('count(items.medium_id) desc').limit(num)
+  end
+
 end
