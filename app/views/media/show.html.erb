@@ -4,13 +4,12 @@
 <br>
 
 <h1><%= @medium.name %></h1>
+<img src=<%="#{@medium.img_link}"%>>
+<br>
 Created by:
 <%= link_to "#{@medium.image_collection.artist.name}", artist_path(@medium.image_collection.artist) %>
-
+<p>Genre: <%= @medium.genre %></p>
 <p>Collection: <%= link_to "#{@medium.image_collection.name}", image_collection_path(@medium.image_collection)%> </p>
-
-
-
 
 
 <% if session[:fan_id] %>
