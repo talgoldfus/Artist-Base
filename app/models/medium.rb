@@ -15,4 +15,8 @@ class Medium < ApplicationRecord
     self.all.joins(:items).group('items.medium_id').order('count(items.medium_id) desc').limit(num)
   end
 
+  def self.genres
+    self.all.map { |medium| medium.genre }.uniq
+  end
+
 end

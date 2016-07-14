@@ -9,6 +9,19 @@
       <br>
   </div>
 
+<div class="panel panel-default col-xs-12">
+  <div class="panel-heading">
+    <h3 class="panel-title">Filter Artists By Genre:</h3>
+  </div>
+  <div class="panel-body">
+    <% Medium.genres.each do |genre| %>
+      <button><%= link_to genre, artists_path(:genre_name => genre) %></button>
+    <% end %>
+  </div>
+</div>
+
+ 
+
   <br>
   <%= render partial: "artist_mini_profile", collection: @artists, as: :artist %>
   <br>

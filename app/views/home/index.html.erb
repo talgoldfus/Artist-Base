@@ -13,7 +13,7 @@
     <h3 class="panel-title">Filter Artist By Genre:</h3>
   </div>
   <div class="panel-body">
-    <% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
+    <% Medium.genres.each do |genre| %>
       <button><%= link_to genre, artists_path(:genre_name => genre) %></button>
     <% end %>
   </div>
@@ -39,7 +39,7 @@
     <h3 class="panel-title">Filter Media By Genre:</h3>
   </div>
   <div class="panel-body">
-    <% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
+    <% Medium.genres.each do |genre| %>
       <button><%= link_to genre, media_path(:genre_name => genre) %></button>
     <% end %>
   </div>
