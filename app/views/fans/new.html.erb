@@ -9,12 +9,15 @@
 
   <p><%= f.label :password %></p>
   <p><%= f.password_field :password %></p><br>
-  
+
   <p><%= f.label "Confirm Password: " %></p>
   <p><%= f.password_field :password_confirmation %></p><br><br>
 
   <p><%= f.label :bio %></p>
   <p><%= f.text_field :bio %></p>
+
+  <p><%= f.label "Include a Link for your Profile Picture" %></p>
+  <p><%= f.text_field :img_link %></p>
 
   <p><%= f.submit %></p>
 <% end %>

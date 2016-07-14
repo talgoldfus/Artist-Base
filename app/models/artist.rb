@@ -5,6 +5,8 @@ class Artist < ApplicationRecord
   has_many :media, through: :image_collections
   has_many :items, through: :media
 
+  validates_uniqueness_of :username 
+
   has_secure_password
 
   def self.search(search)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714150843) do
+ActiveRecord::Schema.define(version: 20160714175428) do
 
   create_table "artist_fans", force: :cascade do |t|
     t.integer  "artist_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20160714150843) do
     t.string   "password_digest"
     t.string   "username"
     t.string   "img_link"
+    t.string   "city"
+    t.string   "state"
   end
 
   create_table "audio_collections", force: :cascade do |t|
@@ -40,9 +42,8 @@ ActiveRecord::Schema.define(version: 20160714150843) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "fan_id"
-    t.float    "total_price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "fans", force: :cascade do |t|
@@ -72,7 +73,6 @@ ActiveRecord::Schema.define(version: 20160714150843) do
 
   create_table "media", force: :cascade do |t|
     t.string   "name"
-    t.float    "price"
     t.string   "genre"
     t.integer  "quantity"
     t.datetime "created_at",          null: false

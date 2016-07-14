@@ -12,7 +12,7 @@
   <%i=0%>
 
     <br>
-<h3> Edit currnet media in your collection</h3>
+<h3> Edit current media in your collection</h3>
   <%= f.fields_for :media do |medium| %>
     <% i+= 1%>
     <h5><%= "Medium Number #{i}:" %></h5>
@@ -21,9 +21,6 @@
     <br>
     <%= medium.label :genre %>
     <%= medium.text_field :genre %>
-    <br>
-    <%= medium.label :price %>
-    <%= medium.text_field :price %>
     <br>
     <%= medium.label :quantity %>
     <%= medium.text_field :quantity %>

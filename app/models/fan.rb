@@ -4,5 +4,7 @@ class Fan < ApplicationRecord
   # has_many :carts
   has_one :cart
   has_secure_password
-  
+
+  validates_uniqueness_of :username
+
 end
