@@ -1,69 +1,35 @@
-Reviews of views pages
-Home
-Sign in/sign up user and artist
-Artist index page that includes sign in/up buttons
+To do:
 
-Fan
-new /create from sign in
-Show - profile
-Edit - to update profile
+Views:
+
+Sign Up page
+-add image link tab
+-add image link to premitted paramters
+
+Home Page
+
+- Add filter by genre to artist
+- Add Serach by name to media
+- Add Collection , Add Serach by Name
+-  most popular artists
 
 Artist 
-new /create from sign in
-Show - profile
-Edit - to update profile
-Index - to show all artists 
+-Can only  edit his profile  
 
-Collection
-New/create
-Edit
-Show
-Index 
+Fan 
+-Can only view his own cart
+
+
 
 Media
-new/create
-Show
-Edit 
+- Remove price column from database.
 
-Cart
-Show
 
-Day 2
-home page
-  - artist index
-  - search function by artist name
-      Artist.all.where("name like '%ayer%'")
-  - log in and sign up buttons
-  
-  - activerecord filter for genres that links to a filtered artist index by genre
-
-  need to create a genre show page?
-
-  
-  Home page features
-    - most popular artists
-
-cart
- - change to favorites
- - create a page that shows all of a fans favorites
-  - this fan is a fan's personal collection and shows their collections and media
- - create button on each artist page, collection, and medium that a fan can favorite
- - edit page for favorites with checkbox to delete 
-
-models
+Models
   - validations
-
-  
   - querying for features
 
 
-tests
+Tests
   - models
   - assocations
-
-
-top favorites
-select media.name from Media join Items on media.id = items.medium_id group by items.cart_id order by count(media.name) desc
-
-
-select count(media.name) from Media join Items on media.id = items.medium_id group by items.cart_id
