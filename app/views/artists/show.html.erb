@@ -1,13 +1,17 @@
 <h1><%= "#{@artist.name}'s Profile" %></h1>
+<br>
+<img src=<%="#{@artist.img_link}"%>>
+<br>
 <h3>In a few words...</h3>
 <p><%= @artist.abstract %></p><br>
 
 <h3>Bio:</h3>
 <p><%= @artist.bio %></p><br>
 
-<% @artist.image_collections.each do |collection| %>
-  <p><%= link_to "#{collection.name}", collection %></p>
-<% end %>
+<h3>Collections:</h3>
+<%= render partial: "image_collections/image_collection_mini_profile", collection: @artist.image_collections, as: :image_collection %>
+
+<br>
 
 <% if session[:artist_id] %>
 <%= link_to "edit artist", edit_artist_path(@artist) %><br>

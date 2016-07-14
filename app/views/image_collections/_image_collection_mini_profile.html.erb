@@ -1,0 +1,8 @@
+<div class="panel panel-default col-xs-4">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= link_to "#{image_collection.name}", image_collection_path(image_collection) %></h3>
+  </div>
+  <div class="panel-body">
+    <p>Created by: <%= link_to "#{image_collection.artist.name}", artist_path(image_collection.artist) %></p>
+  </div>
+</div>
