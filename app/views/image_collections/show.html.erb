@@ -13,7 +13,7 @@
 
 <%= render partial: "media/medium_mini_profile", collection: @image_collection.media, as: :medium %>
 
-
+<br>
 <% if session[:artist_id]== @image_collection.artist.id %>
 <%= link_to "Edit This Collection", edit_image_collection_path(@image_collection) %>
 <% end %>
