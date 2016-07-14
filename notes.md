@@ -61,3 +61,9 @@ tests
   - models
   - assocations
 
+
+top favorites
+select media.name from Media join Items on media.id = items.medium_id group by items.cart_id order by count(media.name) desc
+
+
+select count(media.name) from Media join Items on media.id = items.medium_id group by items.cart_id
