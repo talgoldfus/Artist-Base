@@ -24,9 +24,10 @@
         <!-- else show login or sign up options -->
         <% else %>
           <li role="presentation" class="active"><a href="/login">Login</a></li>
-          <li role="presentation" class="active">Sign up: </li>
-          <li role="presentation" class="active"><a href=<%= new_artist_path %> >Artist</a></li>
-          <li role="presentation" class="active"><a href=<%= new_fan_path %> >Fan</a></li>
+          <p class="navbar-text navbar-right">Not a member? Sign up here:
+          <a href=<%= new_artist_path %> >Artist</a> /
+         <a href=<%= new_fan_path %> >Fan</a></p>
+
         <% end %>
       </ul>
     <%= yield %>

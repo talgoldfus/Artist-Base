@@ -1,28 +1,30 @@
-<br>
-Log in:
-<p><%= link_to "Sign in", login_path %></p>
 
+<br>
 <%= form_tag('/artists', method: "get") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
   <%= submit_tag("Search by Artist Name") %>
 <% end %>
 
+
+
+
+<div class="container-fluid">
 <h1>View All Artists</h1>
 <% @artists.each do |artist| %>
   <p><%= link_to "#{artist.name} -- #{artist.artist_type}", artist_path(artist) %></p>
 <% end %>
+</div>
 
-Select by Genre:
-<% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
-<%= link_to genre, media_path(:genre_name => genre) %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Filter Media By Genre:</h3>
+  </div>
+  <div class="panel-body">
+    <% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
+<button><%= link_to genre, media_path(:genre_name => genre) %></button>
 <% end %>
+  </div>
+</div>
 
-<br>
-<br> 
-Not a member? Sign up here!
-<br>
-<br> 
 
-Artists: <%= link_to "Sign up", new_artist_path %></p>
-
-Fans: <%= link_to "Sign up", new_fan_path %></p>
