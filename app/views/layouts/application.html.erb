@@ -11,9 +11,18 @@
   <body>
     <div class="container">
       <ul class="nav nav-pills">
+
         <li role="presentation" class="active"><a href="/">Home</a></li>
-        <% if session[:artist_id] || session[:fan_id] %>
+            <!-- If logged in as a user or an artist show logout option and relavant show pages -->
+        <% if session[:fan_id] || session[:artist_id] %>
+            <% if session[:fan_id] %>
+              <li role="presentation" class="active"><a href=<%="#{fan_path(session[:fan_id])}"%> >Profile</a></li>
+              <li role="presentation" class="active"><a href=<%="#{cart_path(Fan.find(session[:fan_id]).cart)}"%>>My Favorites</a></li>
+            <% else %>
+              <li role="presentation" class="active"><a href=<%= artist_path(session[:artist_id])%>>Profile</a></li>
+            <% end %>
           <li role="presentation" class="active"><%= link_to "Logout", "/logout", method: :post %></li>
+        <!-- else show login or sign up options -->
         <% else %>
           <li role="presentation" class="active"><a href="/login">Login</a></li>
           <p class="active">Sign up: </p>
