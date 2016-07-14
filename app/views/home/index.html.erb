@@ -1,4 +1,19 @@
 <div class="container-fluid col-xs-12">
+  <h1>Recently Added </h1>
+    <br>
+      <%= render  "recently_added" %>
+    <br>
+</div>
+
+<br>
+<div class="container-fluid col-xs-12">
+  <h1>Recently Liked</h1>
+    <br>
+      <%= render  "recently_liked" %>
+    <br>
+</div>
+
+<div class="container-fluid col-xs-12">
   <h1>Most Popular Artists</h1>
   <br>
   <%= form_tag('/artists', method: "get") do %>
