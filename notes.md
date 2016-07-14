@@ -5,6 +5,7 @@ Views:
 Sign Up page
 -add image link tab
 -add image link to premitted paramters
+-validate uniq username
 
 Home Page
 
