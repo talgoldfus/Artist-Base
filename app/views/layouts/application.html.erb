@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Artistbase</title>
-    <%= csrf_meta_tags %>
 
+    <title>Artistbase</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
     <div class="container">
       <ul class="nav nav-pills">
-
         <li role="presentation" class="active"><a href="/">Home</a></li>
             <!-- If logged in as a user or an artist show logout option and relavant show pages -->
         <% if session[:fan_id] || session[:artist_id] %>
@@ -25,14 +24,12 @@
         <!-- else show login or sign up options -->
         <% else %>
           <li role="presentation" class="active"><a href="/login">Login</a></li>
-          <p class="active">Sign up: </p>
-          <li role="presentation" class="active"><a href="artists/new">Artist</a></li>
-          <li role="presentation" class="active"><a href="fans/new">Fan</a></li>
+          <li role="presentation" class="active">Sign up: </li>
+          <li role="presentation" class="active"><a href=<%= new_artist_path %> >Artist</a></li>
+          <li role="presentation" class="active"><a href=<%= new_fan_path %> >Fan</a></li>
         <% end %>
       </ul>
     <%= yield %>
-
-
 
     </div>
   </body>
