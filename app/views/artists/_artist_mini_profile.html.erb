@@ -5,7 +5,8 @@
   </div>
 
   <div class="panel-body">
-    <img src=<%="#{artist.img_link}"%>><br>
+  <%= link_to image_tag("#{artist.img_link}"), artist_path(artist) %>
+    <br>
     <p>Abstract <%=artist.abstract %> </p>
   </div>
   
