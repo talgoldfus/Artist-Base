@@ -20,12 +20,6 @@ Artist
 Fan 
 -Can only view his own cart
 
-
-
-Media
-- Remove price column from database.
-
-
 Models
   - validations
   - querying for features

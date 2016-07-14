@@ -8,12 +8,30 @@
   <br>
 </div>
 
+<div class="panel panel-default col-xs-12">
+  <div class="panel-heading">
+    <h3 class="panel-title">Filter Artist By Genre:</h3>
+  </div>
+  <div class="panel-body">
+    <% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
+      <button><%= link_to genre, artists_path(:genre_name => genre) %></button>
+    <% end %>
+  </div>
+</div>
+
 <br>
 <%= render partial: "artists/artist_mini_profile", collection: Artist.all, as: :artist %>
 <br>
 
 <div class="container-fluid col-xs-12">
+
   <h1>All Media</h1>
+  <br>
+  <%= form_tag('/media', method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
+    <%= submit_tag("Search by Medium Name") %>
+    <% end %>
+  <br>
 </div>
 
 <div class="panel panel-default col-xs-12">

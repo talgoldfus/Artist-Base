@@ -6,4 +6,9 @@ class Medium < ApplicationRecord
   def artist
     self.image_collection.artist
   end
+
+  def self.search(search)
+    medium = where("name LIKE ?", "%#{search}%")
+  end
+
 end

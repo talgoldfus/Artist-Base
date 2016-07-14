@@ -24,18 +24,20 @@ class MediaController < ApplicationController
   end
 
   def index
-    if params[:genre_name]
-      @media = Medium.all.where("genre = '#{params[:genre_name]}'").group('image_collection_id')
+    if params[:search]
+      @media = Medium.search(params[:search]).order("created_at DESC")
+    elsif params[:genre_name]
+      @media = Medium.all.where("genre = '#{params[:genre_name]}'")
     else
-      @media=Medium.all
+      @media=Medium.all.order('created_at DESC')
     end
   end
 
 
-private
+  private
 
-def medium_params
-  params.require(:medium).permit(:name, :genre, :price, :quantity)
-end
+  def medium_params
+    params.require(:medium).permit(:name, :genre, :price, :quantity ,:search)
+  end
 
 end

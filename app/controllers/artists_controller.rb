@@ -13,9 +13,10 @@ class ArtistsController < ApplicationController
   end
 
   def index
-    @artists = Artist.all
     if params[:search]
       @artists = Artist.search(params[:search]).order("created_at DESC")
+    elsif params[:genre_name]
+      @artists = Artist.all.joins(:media).where("genre = '#{params[:genre_name]}'")
     else
       @artists = Artist.all.order('created_at DESC')
     end
@@ -43,6 +44,6 @@ class ArtistsController < ApplicationController
 
   private
     def artist_params
-      params.require(:artist).permit(:name, :artist_type, :abstract, :bio, :username, :password, :password_confirmation)
+      params.require(:artist).permit(:name, :artist_type, :abstract, :bio, :username, :password, :password_confirmation ,:genre)
     end
 end

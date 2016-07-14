@@ -1,6 +1,13 @@
   <div class="container-fluid col-xs-12">
        <h1><%= link_to "View All  Media", media_path  %> </h1>
   </div>
+  
+ <br>
+  <%= form_tag('/media', method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
+    <%= submit_tag("Search by Medium Name") %>
+    <% end %>
+  <br>
 
   <div class="panel panel-default col-xs-12">
     <div class="panel-heading">
