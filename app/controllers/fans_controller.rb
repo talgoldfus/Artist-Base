@@ -6,11 +6,17 @@ class FansController < ApplicationController
   end
 
   def create
+
     @fan = Fan.create(fan_params)
     @fan.cart= Cart.create()
     @fan.save
-    login(@fan)
-    redirect_to fan_path(@fan)
+    if @fan.id
+      login(@fan)
+      redirect_to fan_path(@fan)
+    else
+      flash.now[:message]="#{@fan.errors.full_messages.first}"
+      render 'new'
+    end
   end
 
   def show

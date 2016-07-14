@@ -6,10 +6,15 @@ class ArtistsController < ApplicationController
   end
 
   def create
+
     @artist = Artist.create(artist_params)
-    session[:artist_id] = @artist.id
-    # redirect_to '/'
-    redirect_to @artist
+    if @artist.id
+      session[:artist_id] = @artist.id
+      redirect_to @artist
+    else
+      flash.now[:message]="#{@artist.errors.full_messages.first}"
+      render 'new'
+    end
   end
 
   def index

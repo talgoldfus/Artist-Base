@@ -3,6 +3,10 @@ class Medium < ApplicationRecord
   has_many :items
   has_many :carts, through: :items
 
+  validates_presence_of :name ,:genre
+  validates_format_of :img_link, :with => %r{\Ahttp.+\.(gif|jpe?g|png).+\z}i, :message => "must have an image extension"
+
+
   def artist
     self.image_collection.artist
   end
