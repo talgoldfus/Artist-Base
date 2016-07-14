@@ -1,26 +1,37 @@
 
-<br>
-<%= form_tag('/artists', method: "get") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
-  <%= submit_tag("Search by Artist Name") %>
-<% end %>
-
-
-
-
-<h1>View All Artists</h1>
-<br>
-<%= render partial: "artist_mini_profile", collection: @artists, as: :artist %>
-<br>
-<div class="panel panel-default col-xs-12">
-  <div class="panel-heading">
-    <h3 class="panel-title">Filter Media By Genre:</h3>
+  <div class="container-fluid col-xs-12">
+    <h1>View All Artists</h1>
+     <br>
+      <%= form_tag('/artists', method: "get") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
+        <%= submit_tag("Search by Artist Name") %>
+      <% end %>
+      <br>
   </div>
-  <div class="panel-body">
-    <% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
-<button><%= link_to genre, media_path(:genre_name => genre) %></button>
-<% end %>
+  
+  <br>
+  <%= render partial: "artist_mini_profile", collection: @artists, as: :artist %>
+  <br>
+
+  <div class="container-fluid col-xs-12">
+    <h1>View All Media</h1>
   </div>
-</div>
+
+  <div class="panel panel-default col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">Filter Media By Genre:</h3>
+    </div>
+    <div class="panel-body">
+      <% @genre = Medium.all.map { |medium| medium.genre }.uniq.each do |genre| %>
+      <button><%= link_to genre, media_path(:genre_name => genre) %></button>
+    <% end %>
+    </div>
+  </div>
+
+<br>
+<%= render partial: "media/medium_mini_profile", collection: Medium.all, as: :medium %>
+<br>
+
+
 
 
