@@ -28,6 +28,9 @@ class FansController < ApplicationController
    redirect_to fan_path(@fan)
   end
 
+  def destroy
+    sessions[:fan_id] = nil
+  end
 
 private
 
