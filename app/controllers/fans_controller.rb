@@ -35,7 +35,7 @@ class FansController < ApplicationController
 private
 
 def fan_params
-  params.require(:fan).permit(:name, :bio, :username, :password, :password_confirmation)
+  params.require(:fan).permit(:name, :bio, :username, :password, :password_confirmation, :img_link)
 end
 
 end

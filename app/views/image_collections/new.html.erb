@@ -8,24 +8,20 @@
   <h3> Create new media for your collection</h3>
     <%= f.fields_for :media do |medium| %>
       <% i+= 1%>
-          <h5><%= "Medium Number #{i}:" %></h5>
-       <%= medium.label :name %>
-       <%= medium.text_field :name %>
-       <br>
-        <%= medium.label :genre %>
-       <%= medium.text_field :genre %>
-       <br>
-       <%= medium.label :price %>
-       <%= medium.text_field :price %>
-       <br>
-       <%= medium.label :quantity %>
-       <%= medium.text_field :quantity %>
-  <br>
+      <h5><%= "Medium Number #{i}:" %></h5>
+      <%= medium.label :name %>
+      <%= medium.text_field :name %>
+      <br>
+      <%= medium.label :genre %>
+      <%= medium.text_field :genre %>
+      <br>
+      <%= medium.label :quantity %>
+      <%= medium.text_field :quantity %>
 
+      <p><%= f.label "Include a Link for Your Piece" %></p>
+      <p><%= f.text_field :img_link %></p>
+    <br>
     <%end%>
-
   <br>
-
   <%=f.submit %>
-
 <% end %>
