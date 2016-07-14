@@ -8,15 +8,14 @@
 
 
 
-<div class="container-fluid">
 <h1>View All Artists</h1>
-<% @artists.each do |artist| %>
-  <p><%= link_to "#{artist.name} -- #{artist.artist_type}", artist_path(artist) %></p>
-<% end %>
-</div>
 
 
-<div class="panel panel-default">
+<%= render partial: "artist_mini_profile", collection: @artists, as: :artist %>
+
+
+
+<div class="panel panel-default col-xs-12">
   <div class="panel-heading">
     <h3 class="panel-title">Filter Media By Genre:</h3>
   </div>
