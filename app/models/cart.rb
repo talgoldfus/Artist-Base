@@ -8,7 +8,4 @@ class Cart < ApplicationRecord
     self.media.map {|medium| medium.image_collection}.uniq
   end
 
-
-
-
 end

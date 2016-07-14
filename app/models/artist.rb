@@ -21,6 +21,12 @@ class Artist < ApplicationRecord
     self.joins(:items).group(:id).order('count(artists.id) desc').limit(num)
   end
 
+  def self.recently_favorited(num)
+    Item.recently_created(num).map do |item|
+      Medium.find(item.medium_id).image_collection.artist
+    end.uniq
+  end
+
 
 
 end

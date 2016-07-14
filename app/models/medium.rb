@@ -19,4 +19,10 @@ class Medium < ApplicationRecord
     self.all.map { |medium| medium.genre }.uniq
   end
 
+  def self.recently_favorited(num)
+    Item.recently_created(num).map do |item|
+      self.find(item.medium_id)
+    end.uniq
+  end
+
 end
