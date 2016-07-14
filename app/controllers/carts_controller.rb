@@ -2,7 +2,9 @@ class CartsController < ApplicationController
   before_action :login_required
 
   def show
-    @cart= Fan.find(session[:fan_id].to_i).cart
+    @cart= Cart.find(current_fan.cart.id)
+    redirect_to root_path if params[:id].to_i != @cart.id
+
   end
 
   def edit
@@ -36,7 +38,7 @@ class CartsController < ApplicationController
 
   def cart_params
     
-    params.require(:cart).permit( media:[])
+    params.require(:cart).permit(media:[])
   end
 
 end

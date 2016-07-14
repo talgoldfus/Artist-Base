@@ -13,7 +13,8 @@
 
 <br>
 
-<% if session[:artist_id] %>
+
+<% if validate_self(@artist) %>
 <%= link_to "edit artist", edit_artist_path(@artist) %><br>
 <%= link_to "Add New Collection", new_image_collection_path %><br>
 <% end%>

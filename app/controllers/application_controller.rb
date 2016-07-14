@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :validate_self , :logged_in? ,:current_fan ,:current_artist
 
   def current_artist
     Artist.find(session[:artist_id]) if session[:artist_id]
@@ -26,4 +27,9 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def validate_self(user)
+    session["#{user.class.to_s.downcase}_id"] == user.id
+  end
+
 end

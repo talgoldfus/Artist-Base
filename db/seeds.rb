@@ -39,7 +39,7 @@ genre_arr = ["Horror", "Humor", "Biography/Autobiography", "Comic/Graphic", "Nov
 Medium.destroy_all
 n = 0
 50.times do 
-  Medium.create(name: Faker::Name.name, price: rand(100..1000), 
+  Medium.create(name: Faker::Name.name,  
     quantity: rand(1..100), genre: genre_arr[n], image_collection_id: rand(1..20),
     img_link: Faker::Avatar.image("image#{img}", "200x200"))
     img += 1
