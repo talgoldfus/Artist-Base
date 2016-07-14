@@ -18,4 +18,10 @@ RSpec.describe Artist, type: :model do
   end
   # TEARDOWN - deletes the data, in between tests
 
+  describe 'associations' do 
+    it 'has a name' do 
+      expect(Artist.first.name).to eq(@artist.name)
+    end
+
+
 end
