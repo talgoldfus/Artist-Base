@@ -1,18 +1,16 @@
 <h1> Your Favorites </h1>
-  <h4>Favorite Media:</h4>
-  <br>
+<h4>Favorite Media:</h4>
+<br>
 
-  <% @cart.image_collections.each do |collection| %>
-  <!-- List all the media in the cart by the collection it belongs to  
+<% @cart.image_collections.each do |collection| %>
+<!-- List all the media in the cart by the collection it belongs to
 
-  -->
+-->
   <br>
   <h5><%= collection.name %></h5>
-<%= render partial: "media/medium_mini_profile", collection: @cart.media.where(image_collection_id: collection.id ), as: :medium %>
-<br>
-    <% end %>
-
-    <%= link_to "Edit your favorites" , edit_cart_path(@cart)  %>
+  <%= render partial: "media/medium_mini_profile", collection: @cart.media.where(image_collection_id: collection.id ), as: :medium %>
+  <br>
   
+<% end %>
 
-
+<%= link_to "Edit your favorites" , edit_cart_path(@cart)  %>

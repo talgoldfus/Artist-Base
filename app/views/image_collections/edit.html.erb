@@ -8,29 +8,29 @@
 <h3> Select additional media from other collections </h3>
 
 <%= f.collection_check_boxes :media, Medium.all.select {|m| m.artist== @image_collection.artist}, :id, :name %><br>
-    
+
   <%i=0%>
-  
+
     <br>
 <h3> Edit currnet media in your collection</h3>
-      <%= f.fields_for :media do |medium| %>
-        <% i+= 1%>
-            <h5><%= "Medium Number #{i}:" %></h5>
-         <%= medium.label :name %>
-         <%= medium.text_field :name %>
-         <br>
-          <%= medium.label :genre %>
-         <%= medium.text_field :genre %>
-         <br>
-         <%= medium.label :price %>
-         <%= medium.text_field :price %>
-         <br>
-         <%= medium.label :quantity %>
-         <%= medium.text_field :quantity %>
-        <br>
-    <%end%>
-  <br>
+  <%= f.fields_for :media do |medium| %>
+    <% i+= 1%>
+    <h5><%= "Medium Number #{i}:" %></h5>
+    <%= medium.label :name %>
+    <%= medium.text_field :name %>
+    <br>
+    <%= medium.label :genre %>
+    <%= medium.text_field :genre %>
+    <br>
+    <%= medium.label :price %>
+    <%= medium.text_field :price %>
+    <br>
+    <%= medium.label :quantity %>
+    <%= medium.text_field :quantity %>
+    <br>
+  <%end%>
+<br>
 
-  <%=f.submit %>
+<%=f.submit %>
 
 <% end %>

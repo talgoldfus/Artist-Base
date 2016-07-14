@@ -1,14 +1,12 @@
 <div class="panel panel-default col-xs-4">
+
   <div class="panel-heading">
     <h3 class="panel-title"><%= link_to "#{artist.name} - #{artist.artist_type}", artist_path(artist) %></h3>
   </div>
+
   <div class="panel-body">
     <img src=<%="#{artist.img_link}"%>><br>
     <p>Abstract <%=artist.abstract %> </p>
-  
   </div>
+  
 </div>
-
-
-
-
