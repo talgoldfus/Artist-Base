@@ -8,7 +8,7 @@ RSpec.describe Medium, type: :model do
     let(:medium) {FactoryGirl.create :medium,image_collection:image_collection}
     
     it 'checks to see if medium knows about his collection' do 
-      expect(medium.image_collection).to eq(image_collection)
+      expect(medium.image_collection).to include(image_collection)
     end
   end
 
