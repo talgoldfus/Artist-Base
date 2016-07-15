@@ -35,6 +35,12 @@ RSpec.describe Cart, type: :model do
       expect(@cart.recently_added_medium).to eq(@medium3)
     end
   end
+
+  describe "#recently_added_collection" do
+    it 'can find the most recently added collection' do
+      
+    end
+  end
   # def recently_added_medium
   #      Medium.find(self.items.last.medium_id)
   # end
