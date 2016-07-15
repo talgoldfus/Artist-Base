@@ -16,7 +16,8 @@ Fan.destroy_all
 20.times do
   fan =Fan.create(name: Faker::Name.name, bio: Faker::ChuckNorris.fact,
     password: "flatiron", username: Faker::Internet.email,
-    img_link: Faker::Avatar.image("image#{img}", "200x200"))
+    img_link: Faker::Avatar.image("image#{img}", "200x200"),
+    city: Faker::Address.city, state: Faker::Address.state)
     img += 1
   fan.cart=Cart.create()
   fan.save
@@ -40,8 +41,7 @@ genre_arr = ["Horror", "Humor", "Biography/Autobiography", "Comic/Graphic", "Nov
 Medium.destroy_all
 n = 0
 40.times do
-  Medium.create(name: Faker::Name.name,
-    quantity: rand(1..100), genre: genre_arr[n], image_collection_id: rand(1..20),
+  Medium.create(name: Faker::Name.name, genre: genre_arr[n], image_collection_id: rand(1..20),
     img_link: Faker::Avatar.image("image#{img}", "200x200"))
     img += 1
     n += 1
