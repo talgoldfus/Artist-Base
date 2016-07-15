@@ -34,5 +34,24 @@ RSpec.describe Medium, type: :model do
     end
   end
 
+  describe 'Medium#most_favorited_media' do
+
+  before do
+    @lilly= FactoryGirl.create :medium, name: "water lilly" ,genre: "Classic"
+    @pop= FactoryGirl.create :medium, name: "Pop" ,genre: "Pop Art"
+    @mona= FactoryGirl.create :medium
+    26.times {FactoryGirl.create :item  ,medium:@pop}
+    13.times {FactoryGirl.create :item  ,medium:@lilly}
+
+  end
+    it 'checks to see if medium knows whats is the favorited medium' do
+      expect(Medium.most_favorited_media(2).first).to eq(@pop)
+    end
+
+    it 'checks to see if medium knows whats his most recent favorited medium' do
+      expect(Medium.recently_favorited(2).first).to eq(@lilly)
+    end
+  end
+
 
 end
