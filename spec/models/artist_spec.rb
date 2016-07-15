@@ -22,6 +22,7 @@ RSpec.describe Artist, type: :model do
     it 'has a name' do 
       expect(Artist.first.name).to eq(@artist.name)
     end
+  end
 
 
 end
