@@ -10,4 +10,14 @@ Name:
 Bio:
 <%= @fan.bio %><br><br>
 
+<% if !@fan.cart.items.empty? %>
+Based off your interests, below is a medium you may like:
+  <h3 class="panel-title"><%= link_to "#{Fan.recommended_medium(@fan).name}", medium_path(Fan.recommended_medium(@fan)) %></h3>
+  <div class="panel-body">
+  <%= link_to image_tag("#{Fan.recommended_medium(@fan).img_link}"), medium_path(Fan.recommended_medium(@fan)) %>
+<% end %>
+<br>
+
+<br>
 <%= link_to "Edit Profile", edit_fan_path(@fan), class: "btn btn-primary" %>
+</div>
