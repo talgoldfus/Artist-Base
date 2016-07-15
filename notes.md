@@ -23,3 +23,5 @@ Tests
 
 Find all of the fan's items
   fan_items = fan.cart.items
+
+  

@@ -1,4 +1,4 @@
-<%= flash.now[:message] %> 
+<%= flash.now[:message] %>
 
 
 <h1>Create a New Artist</h1>
@@ -22,6 +22,9 @@
     <%= f.radio_button :artist_type, 'musician'  %>  </p>
   <p><%= f.label "videographer" %>
     <%= f.radio_button :artist_type, 'videographer'  %>  </p><br>
+
+  <p><%= f.label "Where are you from?" %><br>
+    <%= f.text_field :city, placeholder: 'city' %><%= f.text_field :state, placeholder: 'state' %></p>
 
   <p><%= f.label :abstract, "Write a short abstract about your work" %></p>
   <p><%= f.text_area :abstract %></p><br>
