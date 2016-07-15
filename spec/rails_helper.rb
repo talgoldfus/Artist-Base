@@ -35,20 +35,21 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
     config.infer_spec_type_from_file_location!
-  DatabaseCleaner.strategy = :truncation
-  config.after(:all) do
-    DatabaseCleaner.clean
-  end
+  # DatabaseCleaner.strategy = :truncation
+  # config.after(:all) do
+  #   DatabaseCleaner.clean
+  # end
   config.before(:each) do
-  
-  @artist1 = Artist.create(name: "Kevin", abstract: "here is kevin's header", bio: "here is kevin's bio", username: "Kevin", artist_type: "Photographer")
-  @artist2 = Artist.create(name: "Ryan", abstract: "here is ryan's header", bio: "here is ryan's bio", username: "Ryan", artist_type: "Photographer")
-  @artist3 = Artist.create(name: "Tal", abstract: "here is tal's header", bio: "here is tal's bio", username: "Tal", artist_type: "Photographer")
-  
-  @fan1 = Fan.create(name: "jeff", bio: "instructor", username: "jeff")
-  @fan2 = Fan.create(name: "leigh", bio: "instructor", username: "leigh")
-  @fan3 = Fan.create(name: "sam", bio: "instructor", username: "sam")
 
+  
+  # @artist1 = Artist.create(name: "Kevin", abstract: "here is kevin's header", bio: "here is kevin's bio", username: "Kevin", artist_type: "Photographer")
+  # @artist2 = Artist.create(name: "Ryan", abstract: "here is ryan's header", bio: "here is ryan's bio", username: "Ryan", artist_type: "Photographer")
+  # @artist3 = Artist.create(name: "Tal", abstract: "here is tal's header", bio: "here is tal's bio", username: "Tal", artist_type: "Photographer")
+  
+  # @fan1 = Fan.create(name: "jeff", bio: "instructor", username: "jeff")
+  # @fan2 = Fan.create(name: "leigh", bio: "instructor", username: "leigh")
+  # @fan3 = Fan.create(name: "sam", bio: "instructor", username: "sam")
+end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
