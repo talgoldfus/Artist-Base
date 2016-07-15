@@ -38,7 +38,13 @@ RSpec.describe Cart, type: :model do
 
   describe "#recently_added_collection" do
     it 'can find the most recently added collection' do
-      
+      expect(@cart.recently_added_collection).to eq(@medium3.image_collection)
+    end
+  end
+
+  describe "#recently_added_artist" do
+    it "can find the most recently added artist" do
+      expect(@cart.recently_added_artist).to eq(@medum3.artist)
     end
   end
   # def recently_added_medium

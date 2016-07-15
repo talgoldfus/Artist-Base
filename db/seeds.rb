@@ -39,7 +39,7 @@ word_arr = %w[Tampflex Opela Wrapsafe Kanlam Greenlam Lotlux Cardguard Treeflex 
 ImageCollection.destroy_all
 n = 0
 20.times do
-  ImageCollection.create(name: word_arr[n], artist_id: rand(1..10),
+  ImageCollection.create(name: word_arr[n], artist_id: rand((Artist.first.id)..(Artist.last.id)),
     img_link: Faker::Avatar.image("image#{img}", "200x200"))
   n += 1
   img += 1
