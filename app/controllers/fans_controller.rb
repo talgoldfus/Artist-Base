@@ -30,7 +30,7 @@ class FansController < ApplicationController
 
   def update
    @fan = Fan.find(params[:id])
-   @fan.update(name: params[:fan][:name], bio: params[:fan][:bio])
+   @fan.update(fan_params)
    redirect_to fan_path(@fan)
   end
 

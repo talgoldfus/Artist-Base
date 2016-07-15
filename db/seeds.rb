@@ -1,13 +1,16 @@
 ##artists
 #Faker::Avatar.image("my-own-slug", "50x50")
 img = 1
+
+CITIES = ["Esperanzashire","Rueckerside","West Kalebview","New Holdenview","Port Norbert","New Brendashire","West Pearlieshire","West Josuemouth","Harrisview","Erdmanside"]
+
 Artist.destroy_all
-10.times do
+20.times do
    Artist.create(name: Faker::Name.name, abstract: Faker::ChuckNorris.fact,
     bio: Faker::Hacker.say_something_smart, password: "flatiron",
     username: Faker::Internet.email, artist_type: "Photographer",
     img_link: Faker::Avatar.image("image#{img}", "200x200"),
-    city: Faker::Address.city, state: Faker::Address.state)
+    city: CITIES[img - 1], state: Faker::Address.state)
    img += 1
 end
 

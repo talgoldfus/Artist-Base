@@ -5,9 +5,15 @@ class Artist < ApplicationRecord
   has_many :media, through: :image_collections
   has_many :items, through: :media
 
+<<<<<<< HEAD
   validates_presence_of :username ,:name ,:bio ,:abstract 
   validates_uniqueness_of :username 
   validates_format_of :img_link, :with => %r{\Ahttp.+\.(gif|jpe?g|png)}i, :message => "must have an image extension"
+=======
+  validates_presence_of :username ,:name ,:bio ,:abstract
+  validates_uniqueness_of :username
+  validates_format_of :img_link, :with => %r{\Ahttp.+\.(gif|jpe?g|png).+\z}i, :message => "must have an image extension"
+>>>>>>> 72b72f852e8ad3d8830a83f4d354e0999ca64c11
 
 
   has_secure_password
