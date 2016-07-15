@@ -2,7 +2,9 @@
 #Faker::Avatar.image("my-own-slug", "50x50")
 img = 1
 
-CITIES = ["Esperanzashire","Rueckerside","West Kalebview","New Holdenview","Port Norbert","New Brendashire","West Pearlieshire","West Josuemouth","Harrisview","Erdmanside"]
+CITIES = ["New York City","Boston","Los Angeles","Philidelphia","Miami","Portland","Seattle","San Francisco","Chicago"]
+
+STATES = ["New York", "Massachusetts", "California", "Pennsylvania", "Florida", "Oregon", "Washington", "California", "Illinois"]
 
 Artist.destroy_all
 20.times do
@@ -10,7 +12,7 @@ Artist.destroy_all
     bio: Faker::Hacker.say_something_smart, password: "flatiron",
     username: Faker::Internet.email, artist_type: "Photographer",
     img_link: Faker::Avatar.image("image#{img}", "200x200"),
-    city: CITIES[img - 1], state: Faker::Address.state)
+    city: CITIES[img - 1], state: STATES[img - 1])
    img += 1
 end
 
@@ -20,7 +22,7 @@ Fan.destroy_all
   fan =Fan.create(name: Faker::Name.name, bio: Faker::ChuckNorris.fact,
     password: "flatiron", username: Faker::Internet.email,
     img_link: Faker::Avatar.image("image#{img}", "200x200"),
-    city: Faker::Address.city, state: Faker::Address.state)
+    city: CITIES[img - 1], state: STATES[img - 1])
     img += 1
   fan.cart=Cart.create()
   fan.save
