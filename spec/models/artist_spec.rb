@@ -38,6 +38,7 @@ RSpec.describe Artist, type: :model do
     FactoryGirl.create :item, medium: medium
   end
 
+
   describe 'class methods' do
 
     describe'.most_image_collections(num)' do
