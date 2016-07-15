@@ -22,11 +22,7 @@ RSpec.describe Cart, type: :model do
     end
 
     it "has many media through items" do
-      binding.pry
       expect(@cart.media).to include(@medium3)
-
     end
-
-    # binding.pry
   end
 end
