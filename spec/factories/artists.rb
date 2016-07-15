@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :artist do
-    username  do 
+    username  do
       "artist#{rand(500..100000)}"
     end
+    artist_type 'painter'
     password 'flatiron'
     name 'Leonardo Devenci'
     abstract 'I am who i am'
