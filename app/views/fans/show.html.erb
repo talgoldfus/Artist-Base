@@ -1,5 +1,13 @@
 Name:
 <%= @fan.name %><br>
 <br>
+<h4><%= "From #{@fan.city}, #{@fan.state}" %></h4><br>
+
+<div class="panel-body">
+<%= image_tag "#{@fan.img_link}" %>
+  <br>
+</div>
 Bio:
-<%= @fan.bio %>
+<%= @fan.bio %><br><br>
+
+<%= link_to "Edit Profile", edit_fan_path(@fan), class: "btn btn-primary" %>
