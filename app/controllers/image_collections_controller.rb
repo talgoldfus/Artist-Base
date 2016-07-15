@@ -45,7 +45,8 @@ class ImageCollectionsController < ApplicationController
           :name,
           :price,
           :genre,
-          :quantity
+          :quantity,
+          :img_link
                   ])
     end
 
