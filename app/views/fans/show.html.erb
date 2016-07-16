@@ -1,23 +1,21 @@
-Name:
-<%= @fan.name %><br>
 <br>
-<h4><%= "From #{@fan.city}, #{@fan.state}" %></h4><br>
-
-<div class="panel-body">
-<%= image_tag "#{@fan.img_link}" %>
-  <br>
-</div>
-Bio:
-<%= @fan.bio %><br><br>
-
-<% if !@fan.cart.items.empty? %>
-Based off your interests, below is a medium you may like:
-  <h3 class="panel-title"><%= link_to "#{Fan.recommended_medium(@fan).name}", medium_path(Fan.recommended_medium(@fan)) %></h3>
-  <div class="panel-body">
-  <%= link_to image_tag("#{Fan.recommended_medium(@fan).img_link}"), medium_path(Fan.recommended_medium(@fan)) %>
-<% end %>
 <br>
 
-<br>
-<%= link_to "Edit Profile", edit_fan_path(@fan), class: "btn btn-primary" %>
-</div>
+  <div class="jumbotron">
+    <div class=" container-fluid col-xs-4">
+      <div class="panel-body">
+        <%= image_tag "#{@fan.img_link}" %>
+      </div>
+    </div>
+    <div class=" container-fluid col-xs-8">
+        <h2> Name: <%= @fan.name %></h2>
+        <br>
+        <h3>From:<%="#{@fan.city}, #{@fan.state}" %></h3>
+        <br>
+        <h3>Bio: <%= @fan.bio %></h3>
+        <br>
+    </div>
+    <div class="text-right">
+    <%= link_to "Edit Profile", edit_fan_path(@fan), class: "btn btn-primary" %>
+    </div>
+  </div>

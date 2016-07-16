@@ -6,13 +6,12 @@ class ImageCollectionsController < ApplicationController
     end
 
     def create
-      # byebug
       @artist = Artist.find(session[:artist_id])
-      @image_collection=ImageCollection.create(artist_id: @artist.id)
-      @image_collection.update(image_collection_params)
-      # @artist.image_collections<< @image_collection
-      # @artist.save
 
+      @image_collection=ImageCollection.create(artist_id: @artist.id)
+
+      @image_collection.update(image_collection_params)
+  
       redirect_to image_collection_path(@image_collection)
     end
 

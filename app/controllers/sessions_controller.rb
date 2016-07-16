@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
 
   def invalid_username(user)
     if user.nil?
-      # byebug
       flash[:message] = "Please enter a valid username"
       redirect_to '/login'
     end

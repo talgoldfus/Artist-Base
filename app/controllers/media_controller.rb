@@ -7,7 +7,6 @@ class MediaController < ApplicationController
   def create
     @medium = Medium.create(medium_params)
     redirect_to media_path(@medium)
-    #can change the redirect to go to the artist page?
   end
 
   def show
