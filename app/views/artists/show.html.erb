@@ -1,21 +1,31 @@
-<h1><%= "#{@artist.name}'s Profile" %></h1>
 <br>
-<img src=<%="#{@artist.img_link}"%>>
 <br>
-<h4><%= "From #{@artist.city}, #{@artist.state}" %></h4>
-<h3>In a few words...</h3>
-<p><%= @artist.abstract %></p><br>
+<div class="jumbotron">
+  <h2><%= "#{@artist.name}'s Profile" %></h2>
+    <div class=" container-fluid col-xs-4">
+        <img src=<%="#{@artist.img_link}"%>> 
+    </div>
+    <div class=" ontainer-fluid col-xs-8">
+        <h3>In a few words...</h3>
+        <p><%= @artist.abstract %></p><br>
+        <br>
+        <h3>From:</h3>
+        <p> <%="#{@artist.city}, #{@artist.state}" %></p>
+        <br>
+        <h3>Bio:</h3>
+        <p><%= @artist.bio %></p>
+        <br>
+    </div>
+    <div class="text-right">
+    <% if validate_self(@artist) %>
+      <%= link_to "edit artist", edit_artist_path(@artist) , class: "btn btn-primary"%>
+      <%= link_to "Add New Collection", new_image_collection_path ,class: "btn btn-primary"%>
+    <% end%>
+    </div>
+</div>
 
-<h3>Bio:</h3>
-<p><%= @artist.bio %></p><br>
 
 <h3>Collections:</h3>
 <%= render partial: "image_collections/image_collection_mini_profile", collection: @artist.image_collections, as: :image_collection %>
 
 <br>
-
-
-<% if validate_self(@artist) %>
-<%= link_to "edit artist", edit_artist_path(@artist) %><br>
-<%= link_to "Add New Collection", new_image_collection_path %><br>
-<% end%>
