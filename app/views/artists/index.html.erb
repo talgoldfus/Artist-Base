@@ -1,28 +1,10 @@
-<div class="container-fluid">
+
   <div class="container-fluid col-xs-12">
    <h1><%= link_to "View All Artists", artists_path  %> </h1>
-     <br>
-      <%= form_tag('/artists', method: "get") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
-        <%= submit_tag("Search by Artist Name") %>
-      <% end %>
-      <br>
   </div>
-
-<div class="panel panel-default col-xs-12">
-  <div class="panel-heading">
-    <h3 class="panel-title">Filter Artists By Genre:</h3>
-  </div>
-  <div class="panel-body">
-    <% Medium.genres.each do |genre| %>
-      <button><%= link_to genre, artists_path(:genre_name => genre) %></button>
-    <% end %>
-  </div>
-</div>
-</div>
+   <%= render partial: "home/search_filter_bar", locals: {type: Artist.new } %>
 
    <%= render partial: "artist_mini_profile", collection: @artists, as: :artist %>
-</div>   
 
 
 
