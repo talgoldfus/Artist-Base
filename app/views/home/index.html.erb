@@ -31,8 +31,14 @@
 
  <%= render partial: "home/search_filter_bar", locals: {type: Medium.new } %>
 
-  <div class="container-fluid col-xs-12"> 
     <%= render partial: "media/medium_mini_profile", collection: Medium.most_favorited_media(6), as: :medium %>
-  </div>
 
+<% if current_fan && !current_fan.cart.items.empty? %>
+<div class="container-fluid col-xs-12">
+  <h1>Recommended Media For You</h1>
 </div>
+
+        <%= render partial: "media/medium_mini_profile", collection: Recommendation.recommended_media(current_fan,3), as: :medium %>
+
+<% end %>
+
