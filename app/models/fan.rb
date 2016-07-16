@@ -17,19 +17,20 @@ class Fan < ApplicationRecord
 
   def self.recommended_medium(current_fan)
     fan_items = current_fan.cart.items.pluck(:medium_id)
-    other_fan_items = []
-      Fan.all.each do |fan|        
-          other_fan_items << fan.cart.items.pluck(:medium_id)
-      end
-      
-      new_arr = []
-      other_fan_items.map do |items|
-          new_arr << (items - fan_items).uniq        
-        end
-    
-    new_arr = (new_arr.sort_by { |a| a.length }).reject(&:empty?)
-    Medium.find new_arr.first[0]
 
+    items_arr = []
+    self.all_fan_items.map do |items|
+        items_arr << (items - fan_items).uniq        
+      end
+    
+    Medium.find items_arr.sort_by { |a| a.length }.reject(&:empty?).first[0]
   end
 
+  def self.all_fan_items
+      other_fan_items = []
+      Fan.all.map do |fan|        
+          other_fan_items << fan.cart.items.pluck(:medium_id)
+      end
+      other_fan_items
+  end
 end

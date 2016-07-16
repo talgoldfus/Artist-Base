@@ -27,29 +27,25 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include FactoryGirl::Syntax::Methods
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
-    config.infer_spec_type_from_file_location!
-  # DatabaseCleaner.strategy = :truncation
-  # config.after(:all) do
-  #   DatabaseCleaner.clean
-  # end
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
 
-  
-  # @artist1 = Artist.create(name: "Kevin", abstract: "here is kevin's header", bio: "here is kevin's bio", username: "Kevin", artist_type: "Photographer")
-  # @artist2 = Artist.create(name: "Ryan", abstract: "here is ryan's header", bio: "here is ryan's bio", username: "Ryan", artist_type: "Photographer")
-  # @artist3 = Artist.create(name: "Tal", abstract: "here is tal's header", bio: "here is tal's bio", username: "Tal", artist_type: "Photographer")
-  
-  # @fan1 = Fan.create(name: "jeff", bio: "instructor", username: "jeff")
-  # @fan2 = Fan.create(name: "leigh", bio: "instructor", username: "leigh")
-  # @fan3 = Fan.create(name: "sam", bio: "instructor", username: "sam")
-end
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -67,7 +63,8 @@ end
   
 
   # Filter lines from Rails gems in backtraces.
-#config.filter_rails_from_backtrace!
+config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
 end

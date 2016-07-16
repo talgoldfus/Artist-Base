@@ -192,7 +192,11 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.2)
+<<<<<<< HEAD
+=======
   database_cleaner
+  factory_girl_rails
+>>>>>>> d68830b78874916fb8d32f77b9616ffee8863658
   faker
   jbuilder (~> 2.5)
   jquery-rails
