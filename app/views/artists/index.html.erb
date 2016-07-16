@@ -1,4 +1,4 @@
-
+<div class="container-fluid">
   <div class="container-fluid col-xs-12">
    <h1><%= link_to "View All Artists", artists_path  %> </h1>
      <br>
@@ -19,14 +19,10 @@
     <% end %>
   </div>
 </div>
+</div>
 
- 
-
-  <br>
-  <%= render partial: "artist_mini_profile", collection: @artists, as: :artist %>
-  <br>
-
- 
+   <%= render partial: "artist_mini_profile", collection: @artists, as: :artist %>
+</div>   
 
 
 

@@ -27,8 +27,10 @@
           <p class="navbar-text navbar-right">Not a member? Sign up here:
           <a href=<%= new_artist_path %> >Artist</a> /
          <a href=<%= new_fan_path %> >Fan</a></p>
-
         <% end %>
+        <li role="presentation" class="active"><a href=<%= artists_path%>>All Artists</a></li>
+        <li role="presentation" class="active"><a href=<%= media_path%>>All Media</a></li>
+
       </ul>
     <%= yield %>
 

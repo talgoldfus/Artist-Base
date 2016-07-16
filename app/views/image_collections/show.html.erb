@@ -1,26 +1,32 @@
-<%  if flash[:message] %>
-<%=  flash[:message]%>
-<%  end %>
+  <%  if flash[:message] %>
+  <%=  flash[:message]%>
+  <%  end %>
 
-<h1> <%=@image_collection.name %></h1>
-<img src=<%="#{@image_collection.img_link}"%>>
-<br>
-<p>by: <%=link_to "#{@image_collection.artist.name}", artist_path(@image_collection.artist) %></p>
+<div class="container">
+  <h1> <%=@image_collection.name %></h1>
+  <img src=<%="#{@image_collection.img_link}"%>>
+  <br>
+  <p>by: <%=link_to "#{@image_collection.artist.name}", artist_path(@image_collection.artist) %></p>
 
-<h3>Art Work Gallery:</h3>
-<br>
+  <h3>Art Work Gallery:</h3>
+  <br>
 
 
-<%= render partial: "media/medium_mini_profile", collection: @image_collection.media, as: :medium %>
+  <%= render partial: "media/medium_mini_profile", collection: @image_collection.media, as: :medium %>
 
-<br>
-<% if validate_self(@image_collection.artist) %>
-<%= link_to "Edit This Collection", edit_image_collection_path(@image_collection) %>
-<% end %>
-<br>
-<% if session[:fan_id] %>
-  <%=form_tag carts_add_item_path do  %>
-    <%= hidden_field_tag "collection_id" , @image_collection.id %>
-    <%= submit_tag "Add collection to favorites" %>
+  <div class="col-xs-12 text-center "> 
+    <br>
+    <% if validate_self(@image_collection.artist) %>
+    <%= link_to "Edit This Collection", edit_image_collection_path(@image_collection) %>
+    <% end %>
+    <br>
+
+  <% if session[:fan_id] %>
+    <%=form_tag carts_add_item_path do  %>
+      <%= hidden_field_tag "collection_id" , @image_collection.id %>
+      <%= submit_tag "Add collection to favorites" %>
+    <% end %>
   <% end %>
-<% end %>
+   </div>
+
+</div>
