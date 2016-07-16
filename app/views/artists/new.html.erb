@@ -1,4 +1,8 @@
-<%= flash.now[:message] %>
+<% if flash.now[:message] %>
+<div class="alert alert-danger" role="alert">
+  <class="alert-link"><%= flash.now[:message] %></a>
+</div>
+<% end %>
 
 
 <h1>Create a New Artist</h1>

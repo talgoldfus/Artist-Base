@@ -16,51 +16,60 @@
 
 <div class="container-fluid col-xs-12">
   <h1>Most Popular Artists</h1>
-  <br>
-  <%= form_tag('/artists', method: "get") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
-    <%= submit_tag("Search by Artist Name") %>
-    <% end %>
-  <br>
 </div>
 
 <div class="panel panel-default col-xs-12">
   <div class="panel-heading">
     <h3 class="panel-title">Filter Artist By Genre:</h3>
   </div>
+  
   <div class="panel-body">
-    <% Medium.genres.each do |genre| %>
-      <button><%= link_to genre, artists_path(:genre_name => genre) %></button>
-    <% end %>
+    <div class="container col-xs-8"> 
+      <% Medium.genres.each do |genre| %>
+        <button><%= link_to genre, artists_path(:genre_name => genre) %></button>
+      <% end %>
+     </div>
+    <div class="container col-xs-4"> 
+     <%= form_tag('/artists', method: "get") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
+      <%= submit_tag("Search by Artist Name") %>
+      <% end %>
+   </div>
+
   </div>
 </div>
 
-<br>
-<%= render partial: "artists/artist_mini_profile", collection: Artist.most_favorited_artist(6), as: :artist %>
-<br>
+  <div class="container-fluid col-xs-12"> 
+    <%= render partial: "artists/artist_mini_profile", collection: Artist.most_favorited_artist(6), as: :artist %>
+  </div>
 
 <div class="container-fluid col-xs-12">
-
   <h1>Most Popular Media</h1>
-  <br>
-  <%= form_tag('/media', method: "get") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
-    <%= submit_tag("Search by Medium Name") %>
-    <% end %>
-  <br>
 </div>
 
 <div class="panel panel-default col-xs-12">
   <div class="panel-heading">
     <h3 class="panel-title">Filter Media By Genre:</h3>
   </div>
-  <div class="panel-body">
-    <% Medium.genres.each do |genre| %>
-      <button><%= link_to genre, media_path(:genre_name => genre) %></button>
-    <% end %>
-  </div>
-</div>
 
-<br>
-<%= render partial: "media/medium_mini_profile", collection: Medium.most_favorited_media(6), as: :medium %>
-<br>
+    <div class="panel-body">
+      <div class="container col-xs-8"> 
+          <% Medium.genres.each do |genre| %>
+            <button><%= link_to genre, media_path(:genre_name => genre) %></button>
+          <% end %>
+        </div>
+
+        <div class="container col-xs-4"> 
+            <%= form_tag('/media', method: "get") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search by Name" %>
+            <%= submit_tag("Search Media By Name") %>
+            <% end %>
+        </div>
+    </div>
+  </div>
+
+  <div class="container-fluid col-xs-12"> 
+    <%= render partial: "media/medium_mini_profile", collection: Medium.most_favorited_media(6), as: :medium %>
+  </div>
+
+</div>

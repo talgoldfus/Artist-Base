@@ -1,4 +1,9 @@
-<%= flash.now[:message] %>
+<% if flash.now[:message] %>
+<div class="alert alert-danger" role="alert">
+  <class="alert-link"><%= flash.now[:message] %></a>
+</div>
+<% end %>
+
 
 <%= form_for @fan do |f| %>
   <h1> Welcome! Please add the below information to get started: </h1>
