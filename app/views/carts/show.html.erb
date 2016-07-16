@@ -10,9 +10,8 @@
     <div class="container">
       <% if !@cart.items.empty? %>
         <h3>Based off your interests, below is a medium you may like:</h3>
-        <%= render partial: "media/medium_mini_profile", collection: [Fan.recommended_medium(current_fan)], as: :medium %>
+        <%= render partial: "media/medium_mini_profile", collection: Fan.recommended_media(current_fan,3), as: :medium %>
      <% end %>
     </div>
 </div>
-
 

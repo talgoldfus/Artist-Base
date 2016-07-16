@@ -15,20 +15,31 @@ class Fan < ApplicationRecord
     Artists.where('state = ?', self.state)
   end
 
-  def self.recommended_medium(current_fan)
+  def self.recommended_media(current_fan,num)
+        carts=self.recommended_carts(current_fan)
+        recommended_media=[]
+        num.times do 
+          random_recommended_cart= carts[rand(0..(carts.size-1))]
+          random_recommended_item=random_recommended_cart[rand(0..(random_recommended_cart.size-1))]
+          recommended_media<<  random_recommended_item
+        end
+        return Medium.find(recommended_media)
+  end
+
+#Retruns a nested array of recommended media ids from other carts that have atleast one similar favorite medium
+  def self.recommended_carts(current_fan)
     fan_items = current_fan.cart.items.pluck(:medium_id)
 
-    items_arr = []
-    self.all_fan_items.map do |items|
-        items_arr << (items - fan_items).uniq        
-      end
-    
-    Medium.find items_arr.sort_by { |a| a.length }.reject(&:empty?).first[0]
+    items_arr=self.all_fan_items.each_with_object([]) do |items,items_arr|
+      items_arr << (items - fan_items).uniq  if !((fan_items & items).empty?)  
+    end
+
+    items_arr.sort_by {|a| a.length }.reject(&:empty?)
   end
 
   def self.all_fan_items
       other_fan_items = []
-      Fan.all.map do |fan|        
+      self.all.each do |fan|        
           other_fan_items << fan.cart.items.pluck(:medium_id)
       end
       other_fan_items
