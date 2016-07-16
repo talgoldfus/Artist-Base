@@ -1,23 +1,46 @@
+<br>
 <% if flash[:message] %>
-  <%= flash[:message] %>
+  <div class="alert alert-danger" role="alert">
+     <class="alert-link"><%= flash[:message] %></a>
+  </div>
 <% end %>
 
-<h1>Login</h1>
+<br>
+<br>
+<div class="container-fluid col-xs-12">
 
-<h3>Artist Login</h3>
-<p><%= form_tag '/sessions' do %></p>
-  <p><%= label_tag "Username" %></p>
-  <p><%= text_field_tag 'artist[username]' %></p>
-  <p><%= label_tag "Password" %></p>
-  <p><%= password_field_tag 'password' %></p>
-  <p><%= submit_tag 'login' %></p>
-<% end %><br><br>
+  <div class= "container-fluid col-xs-6">
+   <div class="panel panel-default">
+      <div class="panel-heading">
+       <h3>Artist Login</h3>
+      </div>
+      <div class="panel-body"> 
+        <p><%= form_tag '/sessions' do %></p>
+          <p><%= label_tag "Username" %></p>
+          <p><%= text_field_tag 'artist[username]' %></p>
+          <p><%= label_tag "Password" %></p>
+          <p><%= password_field_tag 'password' %></p>
+          <p><%= submit_tag 'login' %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<h3>Fan Login</h3>
-<p><%= form_tag '/sessions' do %></p>
-  <p><%= label_tag "Username" %></p>
-  <p><%= text_field_tag 'fan[username]' %></p>
-  <p><%= label_tag "Password" %></p>
-  <p><%= password_field_tag 'password' %></p>
-  <p><%= submit_tag 'login' %></p>
-<% end %>
+  <div class= "container-fluid col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Fan Login</h3>
+        </div>
+          <div class="panel-body"> 
+          <p><%= form_tag '/sessions' do %></p>
+          <p><%= label_tag "Username" %></p>
+          <p><%= text_field_tag 'fan[username]' %></p>
+          <p><%= label_tag "Password" %></p>
+          <p><%= password_field_tag 'password' %></p>
+          <p><%= submit_tag 'login' %></p>
+        <% end %>
+        </div>
+      </div>
+    </div>
+</div>
+

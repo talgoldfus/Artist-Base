@@ -1,28 +1,28 @@
 <br>
 <br>
-  <h1 class><%= "#{@artist.name}'s Profile" %></h1>
+<h1 class><%= "#{@artist.name}'s Profile" %></h1>
 
 <div class="jumbotron">
     <div class=" container-fluid col-xs-5">
         <img src=<%="#{@artist.img_link}"%>> 
     </div>
-    <div class=" ontainer-fluid col-xs-7">
+    <div class=" container-fluid col-xs-7">
         <h3>In a few words...</h3>
         <p><%= @artist.abstract %></p><br>
         <br>
         <h3>From:</h3>
         <p> <%="#{@artist.city}, #{@artist.state}" %></p>
     </div>
-     <div class=" ontainer-fluid col-xs-12">
+     <div class=" container-fluid col-xs-12">
       <h3>Bio:</h3>
         <p><%= @artist.bio %></p>
         <br>
-            </div>
-    <div class="text-right">
-    <% if validate_self(@artist) %>
-      <%= link_to "Edit Profile", edit_artist_path(@artist) , class: "btn btn-primary"%>
-    <% end%>
     </div>
+    <% if validate_self(@artist) %>
+      <div class="text-right">
+        <%= link_to "Edit Profile", edit_artist_path(@artist) , class: "btn btn-primary"%>
+      </div>
+    <% end%>
 </div>
 
 

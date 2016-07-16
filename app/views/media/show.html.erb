@@ -1,20 +1,36 @@
-<%  if flash[:message] %>
-<%=  flash[:message]%>
-<%  end %>
 <br>
+<% if flash[:message] %>
+  <div class="alert alert-danger" role="alert">
+     <class="alert-link"><%= flash[:message] %></a>
+  </div>
+<% end %>
 
-<h1><%= @medium.name %></h1>
-<img src=<%="#{@medium.img_link}"%>>
 <br>
-Created by:
-<%= link_to "#{@medium.image_collection.artist.name}", artist_path(@medium.image_collection.artist) %>
-<p>Genre: <%= @medium.genre %></p>
-<p>Collection: <%= link_to "#{@medium.image_collection.name}", image_collection_path(@medium.image_collection)%> </p>
+<br>
+  <div class="jumbotron">
+    <div class="container-fluid col-xs-4">
+      <div class="panel-body">
+        <%= image_tag "#{@medium.img_link}" %>
+      </div>
+    </div>
+    <div class=" container-fluid col-xs-8">
+        <h2>Name: <%= @medium.name %></h2>
+        <br>
+        <h3>Created by: <%= link_to "#{@medium.image_collection.artist.name}", artist_path(@medium.image_collection.artist) %></h3>
+        <br>
+        <h3>Collecton: <%= link_to "#{@medium.image_collection.name}", image_collection_path(@medium.image_collection) %></h3>
+        <br>
+        <h3>Genre: <%= @medium.genre %></h3>
+        <br>
+    </div>
+    <div class="text-right">
+       <% if session[:fan_id] %>
+          <%=form_tag carts_add_item_path do  %>
+          <%= hidden_field_tag "medium_id" , @medium.id %>
+          <%= submit_tag "Add medium to favorites" %>
+        <% end %>
+        <% end %>
+    </div>
+</div>
 
 
-<% if session[:fan_id] %>
-  <%=form_tag carts_add_item_path do  %>
-    <%= hidden_field_tag "medium_id" , @medium.id %>
-    <%= submit_tag "Add medium to favorites" %>
-<% end %>
-<% end %>
