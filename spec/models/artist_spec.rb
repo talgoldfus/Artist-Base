@@ -54,12 +54,8 @@ RSpec.describe Artist, type: :model do
       end
     end
   
-  end
 
-    
-  #  def self.most_favorited_artist(num)
-  #   self.joins(:items).group(:id).order('count(artists.id) desc').limit(num)
-  # end
+  end
 
   end
 
