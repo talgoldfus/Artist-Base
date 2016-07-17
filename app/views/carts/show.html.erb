@@ -2,12 +2,13 @@
   <h1> Your Favorites </h1>
     <h3>Favorite Media:</h3>
   <br>
-      <div class="container">
-        <%= render partial: "media/medium_mini_profile", collection: @cart.media , as: :medium %>
+  <%= render partial: "media/medium_mini_profile", collection: @cart.media , as: :medium %>
+
+    <div class="container col-xs-12">
       <h4><%= link_to "Edit your favorites" , edit_cart_path(@cart) ,class: "btn btn-default"  %></h4>
     </div>
 
-    <div class="container">
+    <div class="container col-xs-12">
       <% if !@cart.items.empty? %>
         <h3>Based off your interests, below is a medium you may like:</h3>
         <%= render partial: "media/medium_mini_profile", collection: Recommendation.recommended_media(current_fan,3), as: :medium %>
