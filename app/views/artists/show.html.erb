@@ -31,7 +31,10 @@
       </div>
     <% elsif current_fan && !current_fan.artists.include?(@artist) %>
       <div class="text-right">
-        <%= button_to "Become a Fan", artist_fans_path , class: "btn btn-primary"%>
+        <%= form_tag '/artist_fans' do %>
+          <%= hidden_field_tag "artist_id", @artist.id %>
+          <%= submit_tag "Become a Fan", class: "btn btn-primary" %>
+        <% end %>
       </div>
     <% end%>
 

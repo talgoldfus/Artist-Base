@@ -38,10 +38,10 @@ class FansController < ApplicationController
     sessions[:fan_id] = nil
   end
 
-private
+  private
 
-def fan_params
-  params.require(:fan).permit(:name, :bio, :username, :password, :password_confirmation, :img_link, :city, :state)
-end
+    def fan_params
+      params.require(:fan).permit(:name, :bio, :username, :password, :password_confirmation, :img_link, :city, :state)
+    end
 
 end
