@@ -14,7 +14,7 @@ class Recommendation < ApplicationRecord
   def self.recommended_medium(current_fan)
     carts=self.recommended_carts(current_fan)
     random_recommended_cart= carts[rand(0..(carts.size-1))]
-    andom_recommended_item=random_recommended_cart[rand(0..(random_recommended_cart.size-1))]
+    random_recommended_item=random_recommended_cart[rand(0..(random_recommended_cart.size-1))]
   end
 
 #Retruns a nested array of recommended media ids from other carts that have atleast one similar favorite medium
@@ -25,6 +25,18 @@ class Recommendation < ApplicationRecord
     end
     items_arr.sort_by {|a| a.length }.reject(&:empty?)
   end
+
+
+  def self.recommended_image_collection(current_fan,num)
+    self.recommended_media.map {|medium| medium.image_collection}
+  end
+
+  def self.recommended_artist(current_fan,num)
+    self.recommended_image_collection(current_fan,num).map {|collection| collection.artist}
+  end
+
+
+
 
 
 end
