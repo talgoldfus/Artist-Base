@@ -1,31 +1,41 @@
+<h3><%= flash[:notice] %></h3>
+
 <br>
 <br>
 <h1 class><%= "#{@artist.name}'s Profile" %></h1>
 
-<div class="jumbotron">
-    <div class=" container-fluid col-xs-5">
+<div class="container jumbotron">
+    <div class=" container-fluid col-xs-6">
         <img src=<%="#{@artist.img_link}"%>>
         <!-- <img src=<%="#{@artist.img_link}"%> width="200" height="200">   -->
     </div>
-    <div class=" container-fluid col-xs-7">
+    <div class=" container-fluid col-xs-6">
         <h3>In a few words...</h3>
         <p><%= @artist.abstract %></p><br>
         <br>
         <h3>From:</h3>
         <p> <%="#{@artist.city}, #{@artist.state}" %></p>
     </div>
-     <div class=" container-fluid col-xs-12">
+     <div class=" container-fluid col-xs-6">
       <h3>Bio:</h3>
         <p><%= @artist.bio %></p>
         <br>
+    </div>
+    <div class="container-fluid col-xs-6">
+      <h3>Fans: <%= @artist.fans.count %></h3>
+      <%= render partial: "fans/fan_mini_profile", collection: @artist.fans.first(6), as: :fan %><br>
     </div>
     <% if validate_self(@artist) %>
       <div class="text-right">
         <%= link_to "Edit Profile", edit_artist_path(@artist) , class: "btn btn-primary"%>
       </div>
+    <% elsif current_fan && !current_fan.artists.include?(@artist) %>
+      <div class="text-right">
+        <%= button_to "Become a Fan", artist_fans_path , class: "btn btn-primary"%>
+      </div>
     <% end%>
-</div>
 
+</div>
 
 <h3>Collections:</h3>
 
@@ -35,4 +45,3 @@
 <br>
 <br>
 <%= render partial: "image_collections/image_collection_mini_profile", collection: @artist.image_collections, as: :image_collection %>
-

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :media
   resources :fans
   resources :artists
+  resources :artist_fans
 
 
   get '/recommendations' ,to: 'recommendations#index'

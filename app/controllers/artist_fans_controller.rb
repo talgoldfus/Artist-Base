@@ -4,7 +4,7 @@ class ArtistFansController < ApplicationController
     unless current_fan.artists.include?(@artist)
       ArtistFan.create(fan_id: current_fan.id, artist_id: @artist.id)
     end
-    flash[:notice] = "You're now of fan of #{@artist.name}"
+    flash[:notice] = "You're now of fan of #{@artist.name}!"
     redirect_to "/artists/#{@artist.id}"
   end
 
