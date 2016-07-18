@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :artists
 
 
+  get '/recommendations' ,to: 'recommendations#index'
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'

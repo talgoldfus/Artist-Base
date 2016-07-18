@@ -17,6 +17,8 @@
             <% if current_fan %>
               <li role="presentation" class="active"><a href=<%="#{fan_path(session[:fan_id])}"%> >Profile</a></li>
               <li role="presentation" class="active"><a href=<%="#{cart_path(Fan.find(session[:fan_id]).cart)}"%>>My Favorites</a></li>
+
+              <li role="presentation" class="active"><a href=<%= recommendations_path %>>My Recommendations</a></li>
             <% else %>
               <li role="presentation" class="active"><a href=<%= artist_path(session[:artist_id])%>>Profile</a></li>
             <% end %>

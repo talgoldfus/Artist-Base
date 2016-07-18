@@ -1,0 +1,35 @@
+<div class="container">
+  <h1> Your Recommendations </h1>
+   
+ 
+   <% if !current_fan.cart.items.empty? %>
+   <br>
+  <h3>Based off your interests, below is a list of artists,collections and media you may like:</h3>
+   <br>
+ <h3>Recommended Media:</h3>
+  <div class="container col-xs-12">
+
+        <%= render partial: "media/medium_mini_profile", collection: Recommendation.recommended_media(current_fan,3), as: :medium %>
+
+  </div>
+
+      <h3>Recommended Artists:</h3>
+  <br>
+  <div class="container col-xs-12">
+    
+        <%= render partial: "artists/artist_mini_profile", collection: Recommendation.recommended_artist(current_fan,3), as: :artist %>
+
+  </div>
+
+      <h3>Recommended Collections:</h3>
+  <br>
+  <div class="container col-xs-12">
+   
+        <%= render partial: "image_collections/image_collection_mini_profile", collection: Recommendation.recommended_image_collection(current_fan,3), as: :image_collection %>
+    
+  </div>
+  <% else %>
+  <h3>Add items to favorites to get personalized recommendations</h3>
+
+<% end %>
+</div>

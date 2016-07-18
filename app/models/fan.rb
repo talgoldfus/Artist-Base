@@ -20,4 +20,11 @@ class Fan < ApplicationRecord
           other_fan_items << fan.cart.items.pluck(:medium_id)
       end
   end
+
+  def self.all_fan_items_hashed
+      other_fan_items = self.all.each_with_object({}) do |fan,other_fan_items|        
+          other_fan_items[fan.id]=fan.cart.items.pluck(:medium_id)
+      end
+  end
+
 end
