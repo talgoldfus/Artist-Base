@@ -11,7 +11,7 @@
     </div>
    <div class="panel-body">
     <%= link_to image_tag("#{Artist.recently_favorited(1).first
-  .img_link}"), artist_path(Artist.recently_favorited(1).first
+  .img_link}",height: "200px"), artist_path(Artist.recently_favorited(1).first
   ) %>
       <br>
       <p>Abstract <%=Artist.recently_favorited(1).first
@@ -27,7 +27,7 @@
       <h3 class="panel-title"><%= link_to "#{Medium.recently_favorited(1).first.name}", medium_path(Medium.recently_favorited(1).first) %></h3>
     </div>
     <div class="panel-body">
-      <%= link_to image_tag("#{Medium.recently_favorited(1).first.img_link}"), medium_path(Medium.recently_favorited(1).first) %><br>
+      <%= link_to image_tag("#{Medium.recently_favorited(1).first.img_link}",height: "200px"), medium_path(Medium.recently_favorited(1).first) %><br>
       <p>Created by: <%= link_to "#{Medium.recently_favorited(1).first.image_collection.artist.name}", artist_path(Medium.recently_favorited(1).first.artist) %></p>
       <p>Genre: <%= Medium.recently_favorited(1).first.genre %></p>
       <p>Collection: <%= link_to "#{Medium.recently_favorited(1).first.image_collection.name}", image_collection_path(Medium.recently_favorited(1).first.image_collection)%> </p>
@@ -43,7 +43,7 @@
       <h3 class="panel-title"><%= link_to "#{ImageCollection.recently_favorited(1).first.name}", image_collection_path(ImageCollection.recently_favorited(1).first) %></h3>
     </div>
     <div class="panel-body">
-      <%= link_to image_tag("#{ImageCollection.recently_favorited(1).first.img_link}"), image_collection_path(ImageCollection.recently_favorited(1).first) %><br> 
+      <%= link_to image_tag("#{ImageCollection.recently_favorited(1).first.img_link}",height: "200px"), image_collection_path(ImageCollection.recently_favorited(1).first) %><br> 
       <p>Created by: <%= link_to "#{ImageCollection.recently_favorited(1).first.artist.name}", artist_path(ImageCollection.recently_favorited(1).first.artist) %></p>
     </div>
   </div>

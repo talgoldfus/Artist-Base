@@ -10,7 +10,7 @@
 <div class="jumbotron">
  <h2>The <%=@image_collection.name %> Collection</h2>
     <div class="container">
-      <img src=<%="#{@image_collection.img_link}"%>>
+      <img src=<%="#{@image_collection.img_link}"%> style="max-height:400px;">
   <br>
     <h4>By: <%=link_to "#{@image_collection.artist.name}", artist_path(@image_collection.artist) %></h4>
   </div>

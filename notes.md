@@ -1,27 +1,10 @@
 To do:
 
 
-Home Page
+Artist:
 
-- Add Collection , Add Serach by Name
-
--  most popular artists
-
-Fan 
-
--Can only view his own cart
-
-Models
-  - validations
-  - querying for features
+Show all artist fans in a small grid of little thumbnails and add a count of fans the artist has. 
 
 
-Tests
-  - models
-  - assocations
-
-
-Find all of the fan's items
-  fan_items = fan.cart.items
 
   

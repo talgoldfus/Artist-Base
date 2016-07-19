@@ -15,6 +15,8 @@
         <br>
     </div>
     <div class="text-right">
-    <%= link_to "Edit Profile", edit_fan_path(@fan), class: "btn btn-primary" %>
-    </div>
+      <%= link_to "Edit Profile", edit_fan_path(@fan), class: "btn btn-primary" %>
+    </div><br>
   </div>
+  <h3>Your Favorite Artists</h3>
+  <%= render partial: "artists/artist_mini_profile", collection: @fan.artists, as: :artist %>

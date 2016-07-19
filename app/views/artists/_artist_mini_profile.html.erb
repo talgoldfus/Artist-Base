@@ -10,12 +10,21 @@
           <div class="panel-body">
           <%= link_to image_tag("#{artist.img_link}", size: "200x200"), artist_path(artist) %>
             <br>
-            <p>Abstract <%=artist.abstract %> </p>    
-          </div>      
+            <p>Abstract <%=artist.abstract %> </p>
+            <div style="float: right">
+            <% if current_fan %>
+              <%= form_tag '/artist_fans' do %>
+                <%= hidden_field_tag "artist_id", artist.id %>
+                <%= submit_tag "Become a Fan", class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+
         </div>
       </div>
 
 
   <%  if (artist_iteration.index+1)%3==0 && artist_iteration.index != 0 %>
-    </div> 
+    </div>
   <% end %>
