@@ -6,7 +6,6 @@ class FansController < ApplicationController
   end
 
   def create
-
     @fan = Fan.create(fan_params)
     @fan.cart= Cart.create()
     @fan.save

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 #associations
 #validations
-RSpec.describe Artist, type: :model do
+describe 'Artist' do
 
-  describe '#artist' do 
+  #describe '#artist' do 
     let(:artist) {FactoryGirl.create :artist}
 
     it 'can be created' do
@@ -57,6 +57,6 @@ RSpec.describe Artist, type: :model do
 
   end
 
-  end
+#  end
 
 end

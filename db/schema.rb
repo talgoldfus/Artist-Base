@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715141600) do
+ActiveRecord::Schema.define(version: 20160718220436) do
 
   create_table "artist_fans", force: :cascade do |t|
     t.integer  "artist_id"
@@ -80,6 +80,17 @@ ActiveRecord::Schema.define(version: 20160715141600) do
     t.datetime "updated_at",          null: false
     t.integer  "image_collection_id"
     t.string   "img_link"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "email"
   end
 
   create_table "video_collections", force: :cascade do |t|

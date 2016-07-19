@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     Fan.find(session[:fan_id]) if session[:fan_id]
   end
 
-  def login(user)
+  def login(user)  
     if user.class == Artist
       session[:artist_id] = user.id
     elsif user.class == Fan

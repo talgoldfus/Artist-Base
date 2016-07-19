@@ -12,4 +12,5 @@ module Services
   end
 end
 
-#create artist with the object and primary img
+
+

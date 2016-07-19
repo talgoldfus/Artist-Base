@@ -3,6 +3,7 @@ require "pry"
 
 RSpec.describe Cart, type: :model do
   before do
+    puts "test"
     @cart = FactoryGirl.create :cart
     @medium1 = FactoryGirl.create :medium
     @medium2 = FactoryGirl.create :medium
