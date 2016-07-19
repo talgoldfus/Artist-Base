@@ -15,8 +15,6 @@ class ImageCollection < ApplicationRecord
 
 
   def randomize_profile_picture
-    byebug
-
     new_profile_img=self.media[rand(1.. self.media.size-1)].img_link
     self.img_link=new_profile_img
   end
