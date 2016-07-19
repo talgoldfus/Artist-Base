@@ -1,5 +1,5 @@
-require_relative "../app/models/services/cooper_museum_client.rb"
-require_relative "../app/models/services/cooper_artist_adapter.rb"
+require_relative "../app/services/cooper_museum_client.rb"
+require_relative "../app/services/cooper_artist_adapter.rb"
 
 
 
