@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+export FACEBOOK_APP_ID='376130205844137'
+export FACEBOOK_SECRET='fda73ad9a8c19022494314771990e918'

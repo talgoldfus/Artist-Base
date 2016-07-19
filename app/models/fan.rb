@@ -5,7 +5,14 @@ class Fan < ApplicationRecord
   has_secure_password
 
   validates_presence_of :username ,:name, :city, :state
-  validates_uniqueness_of :username
+  #validates_uniqueness_of :username
+  validate :unique_name
+
+  def unique_name
+    if Artist.find_by(username: self.username)
+      self.errors.add(:base, "Username is already taken")
+    end
+  end
 
   def artists_in_fans_city
     Artists.where('city = ?', self.city)

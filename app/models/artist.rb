@@ -6,11 +6,18 @@ class Artist < ApplicationRecord
   has_many :items, through: :media
 
   validates_presence_of :username ,:name ,:bio ,:abstract 
-  validates_uniqueness_of :username 
-  #validates_format_of :img_link, :with => %r{\Ahttp.+\.(gif|jpe?g|png)}i, :message => "must have an image extension"
+  # validates_uniqueness_of :username 
+  validate :unique_name
+  # validates_format_of :img_link, :with => %r{\Ahttp.+\.(gif|jpe?g|png)}i, :message => "must have an image extension"
 
 
   has_secure_password
+
+  def unique_name
+    if Fan.find_by(username: self.username)
+      self.errors.add(:base, "Username is already taken")
+    end
+  end
 
   def self.search(search)
     artist = where("name LIKE ?", "%#{search}%")
