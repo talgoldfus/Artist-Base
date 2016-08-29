@@ -18,7 +18,7 @@ class CartsController < ApplicationController
   end
 
   def add_item
-    @cart= Fan.find(session[:fan_id]).cart
+    @cart= current_fan.cart
     if params[:commit]=="Add collection to favorites"
       item= ImageCollection.find(params[:collection_id])
       item.media.each do |m|
