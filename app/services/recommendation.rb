@@ -19,7 +19,7 @@ class Recommendation < ApplicationRecord
   def self.recommended_carts(current_fan, accuracy=1)
     fan_items = current_fan.cart.items.pluck(:medium_id)
     items_arr=Fan.all_fan_items.each_with_object([]) do |items,items_arr|
-      # we can define the accuracy level by setting  (fan_items & items).count > accuracy for more higher number of common intrest
+      # we can define the accuracy level by setting  (fan_items & items).count > accuracy for higher number of common intrest
     accuracy=fan_items.count if accuracy > fan_items.count
       items_arr << (items - fan_items).uniq if (fan_items & items).count >= accuracy
     end
@@ -31,7 +31,7 @@ class Recommendation < ApplicationRecord
   end
 
   def self.recommended_artist(current_fan, num, accuracy=1)
-    self.recommended_image_collection(current_fan,num,accuracy).map {|collection| collection.artist}
+    self.recommended_image_collection(current_fan, num, accuracy).map {|collection| collection.artist}
   end
 
   def self.recommended_carts_hashed(current_fan, accuracy)

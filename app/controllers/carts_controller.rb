@@ -17,7 +17,7 @@ class CartsController < ApplicationController
   end
 
   def add_item
-    @cart= Fan.find(session[:fan_id]).cart
+    @cart= current_fan.cart
     if params[:commit]=="Add collection to favorites"
       process_collection(@cart)
     elsif params[:commit]=="Add medium to favorites"
