@@ -7,15 +7,8 @@ class FansController < ApplicationController
 
   def create
     @fan = Fan.create(fan_params)
-    @fan.cart= Cart.create()
-    @fan.save
-    if @fan.id
-      login(@fan)
-      redirect_to fan_path(@fan)
-    else
-      flash.now[:message]="#{@fan.errors.full_messages.first}"
-      render 'new'
-    end
+    create_fan_cart(@fan)
+    login_or_show_error(@fan)
   end
 
   def show
@@ -24,7 +17,6 @@ class FansController < ApplicationController
 
   def edit
     @fan = Fan.find(params[:id])
-
   end
 
   def update
@@ -38,9 +30,30 @@ class FansController < ApplicationController
   end
 
   private
+    def login_or_show_error(fan)
+      if fan.id
+        handle_post_creation(fan)
+      else
+        handle_creation_error(fan)
+      end
+    end
+
+    def handle_post_creation(fan)
+      login(fan)
+      redirect_to fan_path(fan)
+    end
+
+    def handle_creation_error(fan)
+      flash.now[:message]="#{fan.errors.full_messages.first}"
+      render 'new'
+    end
+
+    def create_fan_cart(fan)
+      fan.cart= Cart.create()
+      fan.save
+    end
 
     def fan_params
       params.require(:fan).permit(:name, :bio, :username, :password, :password_confirmation, :img_link, :city, :state)
     end
-
 end

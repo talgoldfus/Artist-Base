@@ -1,6 +1,6 @@
 module Services
   class CooperArtistAdapter
-   
+
     def self.artist_abstract(roles)
       roles.map do |hash|
         hash.map {|k,v| v if k == "name"}
@@ -20,7 +20,7 @@ module Services
         when "35518655"
           return "DIGITAL"
         when "35347485"
-          return "ARCHIVES"          
+          return "ARCHIVES"
       end
     end
 
@@ -33,24 +33,20 @@ module Services
     end
 
     def set_artist(medium_id, person_id)
-
       media = Services::CooperMuseumClient.new.grab_media(medium_id, person_id).parsed_response["objects"]
       artist = Services::CooperMuseumClient.new.grab_artist(person_id).parsed_response["person"]
-      # byebug
       new_artist=Artist.create(username: artist["name"].split.join.downcase , password:"flatiron",name: artist["name"],abstract: Services::CooperArtistAdapter.artist_abstract(artist["roles"]), bio: Services::CooperArtistAdapter.bio(artist))
-      image_collection=ImageCollection.create(name: media.first["medium"] , artist_id: new_artist.id)
-      # byebug
+      image_collection = ImageCollection.create(name: media.first["medium"], artist_id: new_artist.id)
       media.each do |item|
-        medium= Medium.create(name: item["title"], genre: Services::CooperArtistAdapter.genre(item["department_id"]),image_collection_id:image_collection.id, img_link: item["images"].first["b"]["url"])
+        unless item["images"].first.nil? || item["images"].first["b"].nil?
+          medium= Medium.create(name: item["title"],
+            genre: Services::CooperArtistAdapter.genre(item["department_id"]),
+            image_collection_id: image_collection.id,
+            img_link: item["images"].first["b"]["url"])
+        end
       end
       image_collection.randomize_profile_picture
       image_collection.save
     end
-
   end
-
 end
-
-
-
-

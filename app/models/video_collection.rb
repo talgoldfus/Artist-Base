@@ -1,2 +1,0 @@
-class VideoCollection < ApplicationRecord
-end

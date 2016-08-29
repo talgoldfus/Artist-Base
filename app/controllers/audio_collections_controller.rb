@@ -1,2 +1,0 @@
-class AudioCollectionsController < ApplicationController
-end

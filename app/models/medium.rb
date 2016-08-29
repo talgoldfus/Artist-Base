@@ -6,7 +6,6 @@ class Medium < ApplicationRecord
   validates_presence_of :name ,:genre
   validates_format_of :img_link, :with => /\Ahttp.+\.(gif|jpe?g|png)/i , :message => "must have an image extension"
 
-
   def artist
     self.image_collection.artist
   end
@@ -28,5 +27,4 @@ class Medium < ApplicationRecord
       self.find(item.medium_id)
     end.uniq
   end
-
 end

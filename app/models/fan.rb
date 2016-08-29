@@ -3,7 +3,6 @@ class Fan < ApplicationRecord
   has_many :artists, through: :artist_fans
   has_one :cart
   has_secure_password
-
   validates_presence_of :username ,:name, :city, :state
   #validates_uniqueness_of :username
   validate :unique_name
@@ -23,15 +22,18 @@ class Fan < ApplicationRecord
   end
 
   def self.all_fan_items
-      other_fan_items = self.all.each_with_object([]) do |fan,other_fan_items|        
-          other_fan_items << fan.cart.items.pluck(:medium_id)
-      end
+    self.all.each_with_object([]) do |fan,other_fan_items|
+      other_fan_items << fan.find_media_ids
+    end
+  end
+
+  def find_media_ids
+    self.cart.items.pluck(:medium_id)
   end
 
   def self.all_fan_items_hashed
-      other_fan_items = self.all.each_with_object({}) do |fan,other_fan_items|        
-          other_fan_items[fan.id]=fan.cart.items.pluck(:medium_id)
-      end
+    self.all.each_with_object({}) do |fan,other_fan_items|
+      other_fan_items[fan.id]=fan.find_media_ids
+    end
   end
-
 end

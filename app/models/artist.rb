@@ -5,12 +5,10 @@ class Artist < ApplicationRecord
   has_many :media, through: :image_collections
   has_many :items, through: :media
 
-  validates_presence_of :username ,:name ,:bio ,:abstract 
-  # validates_uniqueness_of :username 
+  validates_presence_of :username ,:name ,:bio ,:abstract
+  # validates_uniqueness_of :username
   validate :unique_name
   # validates_format_of :img_link, :with => %r{\Ahttp.+\.(gif|jpe?g|png)}i, :message => "must have an image extension"
-
-
   has_secure_password
 
   def unique_name
@@ -20,7 +18,7 @@ class Artist < ApplicationRecord
   end
 
   def self.search(search)
-    artist = where("name LIKE ?", "%#{search}%")
+    artist = self.where("name LIKE ?", "%#{search}%")
   end
 
   def self.most_image_collections(num)

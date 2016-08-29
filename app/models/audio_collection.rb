@@ -1,2 +1,0 @@
-class AudioCollection < ApplicationRecord
-end

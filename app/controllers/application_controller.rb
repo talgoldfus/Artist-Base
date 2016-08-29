@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     Fan.find(session[:fan_id]) if session[:fan_id]
   end
 
-  def login(user)  
+  def login(user)
     if user.class == Artist
       session[:artist_id] = user.id
     elsif user.class == Fan
@@ -31,5 +31,4 @@ class ApplicationController < ActionController::Base
   def validate_self(user)
     session["#{user.class.to_s.downcase}_id"] == user.id
   end
-
 end

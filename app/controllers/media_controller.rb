@@ -19,7 +19,7 @@ class MediaController < ApplicationController
 
   def update
     @medium = Medium.find(params[:id])
-    @medium.update(name: params[:medium][:name], genre: params[:medium][:genre], price: params[:medium][:price], quantity: [:medium][:quantity])
+    @medium.update(update_params)
   end
 
   def index
@@ -34,9 +34,18 @@ class MediaController < ApplicationController
 
 
 private
+    def update_params
+      {name: params[:medium][:name], genre: params[:medium][:genre], price: params[:medium][:price], quantity: [:medium][:quantity]}
+    end
 
   def medium_params
-    params.require(:medium).permit(:name, :genre, :price, :quantity ,:search,:img_link ,img_link)
+    params.require(:medium).permit(:name,
+    :genre,
+    :price,
+    :quantity,
+    :search,
+    :img_link,
+    img_link)
 end
 
 end

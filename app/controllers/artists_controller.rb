@@ -6,7 +6,6 @@ class ArtistsController < ApplicationController
   end
 
   def create
-
     @artist = Artist.create(artist_params)
     if @artist.id
       session[:artist_id] = @artist.id
@@ -21,7 +20,7 @@ class ArtistsController < ApplicationController
     if params[:search]
       @artists = Artist.search(params[:search]).order("created_at DESC")
     elsif params[:genre_name]
-      @artists = Artist.all.joins(:media).where("genre = '#{params[:genre_name]}'").uniq
+      @artists = artists_media.where("genre = '#{params[:genre_name]}'").uniq
     else
       @artists = Artist.all.order('created_at DESC')
     end
@@ -48,6 +47,10 @@ class ArtistsController < ApplicationController
 
 
   private
+    def artists_media
+      Artist.all.joins(:media)
+    end
+
     def artist_params
       params.require(:artist).permit(:name, :artist_type, :abstract, :bio, :username, :password, :password_confirmation, :img_link, :city, :state)
     end
